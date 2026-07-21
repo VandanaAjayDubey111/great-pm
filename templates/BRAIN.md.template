@@ -1,0 +1,24 @@
+# great-pm — Compiled Brain
+
+> Long-memory layer. Each agent appends a 1–3 line synthesis after writing
+> its artefact. The SubagentStart hook injects the most-recent 40 lines
+> into every subagent invocation so nothing runs cold.
+>
+> Format: newest entries at the BOTTOM (so `tail -40` returns recent).
+> Each entry: `## <YYYY-MM-DD HH:MM> | <agent> | <topic>` + 1–3 line synthesis.
+
+---
+
+## Current synthesis (curated)
+
+> One-paragraph rolling summary — curate manually every ~2 weeks via
+> `/pm-crystallize`. This is the part most subagents will use to anchor.
+
+(Not yet written. Run `/pm-crystallize` after enough append-log entries
+exist.)
+
+---
+
+## Append log (newest at bottom)
+
+<!-- agents append below this line -->

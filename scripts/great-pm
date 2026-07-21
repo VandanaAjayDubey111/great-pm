@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+// scripts/great-pm — the great-pm CLI dispatcher (Claude adapter front door).
+//   great-pm connect <capability> <verb> --json '<payload>'
+//   great-pm setup <tool> [--token <TOKEN>]
+import { dispatch } from '../adapters/claude/adapter.mjs';
+
+dispatch(process.argv.slice(2))
+  .then((out) => process.stdout.write(JSON.stringify(out) + '\n'))
+  .catch((err) => {
+    process.stderr.write(JSON.stringify({ status: 'error', error: err.message }) + '\n');
+    process.exit(1);
+  });

@@ -1,0 +1,20 @@
+{
+  "name": "great-pm",
+  "owner": {
+    "name": "Vandana Dubey",
+    "url": "https://github.com/VandanaAjayDubey111"
+  },
+  "metadata": {
+    "description": "great-pm — a full product team for a solo PM or founder, as a Claude Code plugin."
+  },
+  "plugins": [
+    {
+      "name": "great-pm",
+      "source": ".",
+      "description": "48 specialist PM agents, 75 skills, and a 6-stage product loop (Discover → Strategize → Prioritize → Define → Launch → Measure) with human gates. The repo root is the plugin.",
+      "version": "1.0.0",
+      "author": { "name": "Vandana Dubey" },
+      "keywords": ["product-management", "ai-pm", "multi-agent", "orchestration"]
+    }
+  ]
+}
