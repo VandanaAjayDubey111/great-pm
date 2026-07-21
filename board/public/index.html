@@ -7,10 +7,10 @@
 <style>
   :root{
     --bg:#0b0c10; --panel:#121319; --panel2:#171922; --line:#23252f;
-    --txt:#e7e9ee; --dim:#8b8f9e; --faint:#5b5f6d;
+    --txt:#eceef3; --dim:#b9c1d0; --faint:#939aab;
     --accent:#8b5cf6; --accent2:#a78bfa;
-    --backlog:#6b7280; --prog:#f59e0b; --done:#34d399; --gate:#a855f7; --blocked:#ef4444;
-    --p0:#ef4444; --p1:#f59e0b; --p2:#8b5cf6; --p3:#6b7280;
+    --backlog:#9aa3b4; --prog:#f59e0b; --done:#34d399; --gate:#a855f7; --blocked:#ef4444;
+    --p0:#ef4444; --p1:#f59e0b; --p2:#8b5cf6; --p3:#9aa3b4;
   }
   *{box-sizing:border-box}
   html,body{margin:0;height:100%;background:var(--bg);color:var(--txt);font:13px/1.5 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
@@ -497,17 +497,17 @@ async function buildSnapshot(){
   const know=cats.map(cc=>`<div class="kc"><b>${esc(cc)}</b> — ${(DOCS.docs||[]).filter(d=>d.exists&&d.category===cc).map(d=>esc(d.name)).join(' · ')}</div>`).join('');
   return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>great-pm · ${esc(proj)}</title><style>
     body{margin:0;background:#0b0c10;color:#e7e9ee;font:14px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Arial}.wrap{max-width:920px;margin:0 auto;padding:34px 28px}
-    h1{font-size:23px;margin:0 0 4px}.sub{color:#8b8f9e;font-size:13px;margin-bottom:22px}
+    h1{font-size:23px;margin:0 0 4px}.sub{color:#b9c1d0;font-size:13px;margin-bottom:22px}
     h2{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#a78bfa;margin:30px 0 10px;border-bottom:1px solid #23252f;padding-bottom:6px}
     .loop{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.ls{background:#171922;border:1px solid #23252f;border-radius:8px;padding:6px 11px;font-size:12px;font-weight:600}.ls.done{border-color:#34d399}.ls.active{border-color:#f59e0b}
-    .lg{font-size:11px;color:#8b8f9e;padding:4px 8px;border:1px dashed #2c2f3a;border-radius:8px}.lg.ok{color:#34d399;border-color:#34d399;border-style:solid}
-    .tiles{display:flex;gap:10px;flex-wrap:wrap}.tile{background:#121319;border:1px solid #23252f;border-radius:10px;padding:11px 15px;min-width:110px}.tile .v{font-size:21px;font-weight:700}.tile .k{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:#5b5f6d;margin-top:3px}
-    ul{margin:6px 0;padding-left:20px}li{margin:5px 0}em{color:#5b5f6d;font-style:normal;font-size:11px}
+    .lg{font-size:11px;color:#b9c1d0;padding:4px 8px;border:1px dashed #2c2f3a;border-radius:8px}.lg.ok{color:#34d399;border-color:#34d399;border-style:solid}
+    .tiles{display:flex;gap:10px;flex-wrap:wrap}.tile{background:#121319;border:1px solid #23252f;border-radius:10px;padding:11px 15px;min-width:110px}.tile .v{font-size:21px;font-weight:700}.tile .k{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:#939aab;margin-top:3px}
+    ul{margin:6px 0;padding-left:20px}li{margin:5px 0}em{color:#939aab;font-style:normal;font-size:11px}
     .kc{font-size:12px;color:#cdd0d8;margin:6px 0}.kc b{color:#a78bfa}
     .rm h3,.rm h4,.rm h5,.rm h6{color:#e7e9ee;margin:15px 0 6px}.rm p{margin:6px 0;color:#cdd0d8}.rm ul{color:#cdd0d8}
-    .rm table{border-collapse:collapse;width:100%;font-size:12px;margin:9px 0}.rm th,.rm td{border:1px solid #23252f;padding:5px 9px;text-align:left;vertical-align:top}.rm th{background:#171922;color:#8b8f9e}
+    .rm table{border-collapse:collapse;width:100%;font-size:12px;margin:9px 0}.rm th,.rm td{border:1px solid #23252f;padding:5px 9px;text-align:left;vertical-align:top}.rm th{background:#171922;color:#b9c1d0}
     code{background:#171922;border:1px solid #23252f;border-radius:4px;padding:1px 5px;font-size:12px}pre{white-space:pre-wrap;background:#171922;border:1px solid #23252f;border-radius:8px;padding:11px;font-size:12px;overflow:auto}
-    .foot{margin-top:36px;color:#5b5f6d;font-size:11px;border-top:1px solid #23252f;padding-top:12px}</style></head>
+    .foot{margin-top:36px;color:#939aab;font-size:11px;border-top:1px solid #23252f;padding-top:12px}</style></head>
     <body><div class="wrap"><h1>${esc(proj)}</h1><div class="sub">great-pm stakeholder snapshot · ${new Date().toLocaleString()} · read-only</div>
     <h2>Where we are — the 6-stage loop</h2><div class="loop">${loop}</div>
     <h2>What needs a decision</h2><ul>${declist}</ul>
