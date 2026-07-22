@@ -17,7 +17,12 @@ approving, what could go wrong, and how to undo it — **without opening the
 diff or the chat history**.
 
 Format adopted 2026-07-22 from the Symphony engineering-handoff pattern
-(ajayd942/cloudflare-ai-event-concierge#4). When starting a new product repo,
+(ajayd942/cloudflare-ai-event-concierge#4).
+
+Related contracts: `ticket-authoring` (the upstream ticket this PR closes —
+its acceptance criteria become this PR's evidence rows) and `pr-review`
+(what the reviewer owes back). The full chain:
+PRD story → ticket → PR → review → merge → deploy. When starting a new product repo,
 copy `.github/PULL_REQUEST_TEMPLATE.md` from great-pm into that repo's
 `.github/` so GitHub auto-fills every new PR with this skeleton.
 
