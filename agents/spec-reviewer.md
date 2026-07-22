@@ -125,6 +125,10 @@ You DO NOT review:
   [ ] No vague adjectives ("user-friendly", "fast", "scalable") without numbers? [Y/N]
   [ ] Required success metrics handed to metrics-architect? [Y/N]
   [ ] Every user story traces to a real Discover/feedback signal? [Y/N]
+  [ ] Top-3 risks present, each with a real mitigation? [Y/N]
+  [ ] Open-decisions section present (owner + answer-by + default per row)? [Y/N]
+  [ ] Every metric has a target AND a guardrail? [Y/N]
+  [ ] Model-backed feature → AI appendix present and complete? [Y/N]
 ```
 Any [N] → at least NEEDS-WORK. ≥3 [N] across multiple sections → GAPS.
 

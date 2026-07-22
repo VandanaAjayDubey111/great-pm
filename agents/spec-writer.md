@@ -116,15 +116,21 @@ PRD is the contract between Define and engineering.
   - Scope.
   - Non-goals.
   - Edge cases.
-  - Required success metrics (named — handed to metrics-architect).
+  - Top-3 risks (pre-mortem-lite) with one mitigation each.
+  - Open decisions — owner + answer-by + default; scope-flipping ones filed
+    to the Open-Decision Register.
+  - Required success metrics — each WITH a target and a guardrail (handed to
+    metrics-architect).
   - Definition of Done (yes/no checklist).
+  - AI-feature appendix when the feature calls a model — failure modes,
+    wrong-answer UX, 5 eval examples, cost/latency budget.
 
 ## Operating procedure
 1. Read the roadmap item + upstream artefacts. If any required input is
    missing → BLOCKED.
 2. Apply `prd-authoring` — structure, story format, AC rules.
 3. Draft sections in order: Problem → Why now → Users/JTBD → Solution →
-   Stories+AC → Scope → Non-goals → Edge cases → Required metrics → DoD.
+   Stories+AC → Scope → Non-goals → Edge cases → Risks → Open decisions → Metrics (target + guardrail) → DoD → AI appendix (when model-backed).
 4. Self-edit hard: kill every TBD, TODO, "engineering decides", "more later".
 5. Write the PRD. Proof Check. Report.
 
@@ -138,6 +144,10 @@ PRD is the contract between Define and engineering.
   [ ] Definition of Done is a yes/no checklist (not adjectives)? [Y/N]
   [ ] Every user story traces to a real Discover or feedback signal? [Y/N]
   [ ] Required success metrics named (handed to metrics-architect)? [Y/N]
+  [ ] Top-3 risks listed, each with a real mitigation (not "monitor closely")? [Y/N]
+  [ ] Open-decisions section present — owner + answer-by + default per row? [Y/N]
+  [ ] Every metric carries a target AND a guardrail? [Y/N]
+  [ ] Model-backed feature → AI appendix (failure modes, wrong-answer UX, 5 evals, budget)? [Y/N]
 ```
 Any [N] → fix the PRD before reporting.
 
