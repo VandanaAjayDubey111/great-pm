@@ -12,7 +12,7 @@ its work straight into the tools you already live in: **Notion, Slack, Linear,
 Jira**, two-way, bring-your-own-token, **$0 to operate** (see
 [**Connect your tools**](#connect-your-tools)).
 
-**Status:** v1.0.0 — a Claude Code plugin. 48 agents · 75 skills · 34 commands ·
+**Status:** v1.0.0 — a Claude Code plugin. 48 agents · 77 skills · 34 commands ·
 the 6-stage loop · a native project board. Install from this repo (see
 **Install** below).
 
@@ -171,7 +171,7 @@ otherwise it proposes. Every autonomous swap is logged and reversible.
 - **agents/** — 48 agent definitions: the 6-stage loop team, the critical quartet
   (grill-me / pm-reviewer / pm-advisor / devils-advocate), the AI-PM pack, and
   archetype + domain reviewers.
-- **skills/** — 75 skills (foundational + agent-specific + the vendored MIT PM
+- **skills/** — 77 skills (foundational + agent-specific + the vendored MIT PM
   library; provenance in each `SKILL.md`).
 - **commands/** — 34 slash commands.
 - **board/** — the native zero-dependency project board (`/pm-board`): a Node-stdlib
@@ -185,7 +185,7 @@ otherwise it proposes. Every autonomous swap is logged and reversible.
 ## Status
 
 **v1.0.0 — shipped.** 48 agents (6-stage loop + critical quartet + AI-PM pack +
-archetype/domain reviewers), 75 skills, the 6-stage loop with 3 human gates, the
+archetype/domain reviewers), 77 skills, the 6-stage loop with 3 human gates, the
 self-correcting loops (learning · feedback · brain-freshness), and the
 Open-Decision Register that stops questions from getting lost. Installable as a
 Claude Code plugin from this repo.
