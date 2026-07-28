@@ -1,0 +1,68 @@
+name: GreatPM MCP CI
+
+on:
+  pull_request:
+    paths:
+      - "README.md"
+      - "SECURITY.md"
+      - "PRIVACY.md"
+      - "mcp/**"
+      - "skills/**"
+      - "templates/**"
+      - "docs/**"
+      - ".github/workflows/mcp-*.yml"
+      - "server.json"
+  push:
+    branches: ["main"]
+    paths:
+      - "README.md"
+      - "SECURITY.md"
+      - "PRIVACY.md"
+      - "mcp/**"
+      - "skills/**"
+      - "templates/**"
+      - "docs/**"
+      - ".github/workflows/mcp-*.yml"
+      - "server.json"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: mcp/package-lock.json
+
+      - name: Install MCP dependencies
+        working-directory: mcp
+        run: npm ci
+
+      - name: Verify generated catalog
+        working-directory: mcp
+        run: npm run catalog:check
+
+      - name: Run MCP tests
+        working-directory: mcp
+        run: npm test -- --run
+
+      - name: Type-check MCP package
+        working-directory: mcp
+        run: npm run typecheck
+
+      - name: Build Worker bundle
+        working-directory: mcp
+        run: npm run deploy:dry
+
+      - name: Run existing connector and adapter tests
+        run: node --test connectors/test/*.test.mjs adapters/test/*.test.mjs

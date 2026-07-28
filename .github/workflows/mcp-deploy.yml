@@ -1,0 +1,45 @@
+name: Deploy GreatPM MCP
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: production
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: mcp/package-lock.json
+
+      - name: Install and verify
+        working-directory: mcp
+        run: |
+          npm ci
+          npm run catalog:check
+          npm test -- --run
+          npm run typecheck
+
+      - name: Deploy Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: mcp
+          wranglerVersion: "4.114.0"
+          command: deploy
+
+      - name: Smoke-test public endpoint
+        working-directory: mcp
+        run: npm run smoke:remote -- https://greatpm-mcp.vandana424-s.workers.dev/mcp

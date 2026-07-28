@@ -7,6 +7,7 @@
   "scripts": {
     "catalog:build": "node scripts/build-catalog.mjs",
     "catalog:check": "node scripts/check-catalog.mjs",
+    "smoke:remote": "node scripts/smoke-remote.mjs",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
     "deploy:dry": "wrangler deploy --dry-run",
@@ -16,14 +17,13 @@
     "node": ">=20"
   },
   "dependencies": {
-    "@modelcontextprotocol/hono": "2.0.0",
     "@modelcontextprotocol/server": "2.0.0",
-    "hono": "4.12.32",
     "zod": "4.4.3"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "5.20260728.1",
     "@modelcontextprotocol/client": "2.0.0",
+    "@types/node": "24.13.3",
     "typescript": "7.0.2",
     "vitest": "4.1.10",
     "wrangler": "4.114.0"
