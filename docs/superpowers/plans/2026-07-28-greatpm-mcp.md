@@ -15,7 +15,8 @@ outbound model calls.
 
 **Stable stack verified 2026-07-28:** `@modelcontextprotocol/server@2.0.0`,
 `@modelcontextprotocol/client@2.0.0`, `@modelcontextprotocol/core@2.0.0`,
-`@modelcontextprotocol/hono@2.0.0`, Hono 4.x, Wrangler 4.x, TypeScript, Vitest,
+the official `@modelcontextprotocol/server@2.0.0` Worker handler, Wrangler 4.x,
+TypeScript, Vitest,
 and Cloudflare Workers types.
 
 ---
@@ -197,7 +198,8 @@ and Cloudflare Workers types.
 
 1. Write failing tests for server metadata and for `/`, `/health`, `/mcp`,
    unknown paths, invalid Host, malformed/disallowed Origin, allowed local and
-   Worker hosts, declared bodies over 256 KiB, and security headers.
+   Worker hosts, declared and undeclared bodies over 256 KiB, disabled
+   subscriptions, and security headers.
 2. Run `npm test -- --run test/security.test.ts test/http.test.ts`; verify
    failure.
 3. Implement `createGreatPmServer()` and register tools, resources, and prompts.

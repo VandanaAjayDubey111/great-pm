@@ -173,10 +173,12 @@ export function prepareWorkflow(
   const stages = workflowStages
     .filter((stage) => !selectedStageIds || selectedStageIds.has(stage.id))
     .map(cloneStage);
-  const focus = input.currentStage ?? stages[0]?.id ?? "discover";
-  const focusStage = workflowStages.find((stage) => stage.id === focus);
-  const focusIndex = workflowStages.findIndex((stage) => stage.id === focus);
-  const upcomingGate = workflowStages
+  const focusStage =
+    stages.find((stage) => stage.id === input.currentStage) ??
+    stages[0] ??
+    workflowStages[0];
+  const focusIndex = stages.findIndex((stage) => stage.id === focusStage.id);
+  const upcomingGate = stages
     .slice(Math.max(0, focusIndex))
     .find((stage) => stage.gate)?.gate;
   const gateText = upcomingGate

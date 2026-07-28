@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { execFileSync } from "node:child_process";
 
 const repositoryRoot = resolve(import.meta.dirname, "../..");
 const endpoint =
@@ -56,5 +57,30 @@ describe("GreatPM public release metadata", () => {
     ]) {
       expect(read(path).length, path).toBeGreaterThan(500);
     }
+  });
+
+  it("binds Registry tags and smoke checks to the release version", () => {
+    const releaseScript = resolve(
+      repositoryRoot,
+      "mcp/scripts/check-release-tag.mjs",
+    );
+    const smokeScript = read("mcp/scripts/smoke-remote.mjs");
+    const publishWorkflow = read(".github/workflows/mcp-publish.yml");
+
+    expect(() =>
+      execFileSync(process.execPath, [releaseScript, "mcp-v1.0.0"], {
+        cwd: resolve(repositoryRoot, "mcp"),
+        stdio: "pipe",
+      }),
+    ).not.toThrow();
+    expect(() =>
+      execFileSync(process.execPath, [releaseScript, "mcp-v9.9.9"], {
+        cwd: resolve(repositoryRoot, "mcp"),
+        stdio: "pipe",
+      }),
+    ).toThrow();
+    expect(smokeScript).toContain("getServerVersion");
+    expect(smokeScript).toContain("expectedVersion");
+    expect(publishWorkflow).toContain("release:check-tag");
   });
 });

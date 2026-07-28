@@ -1,5 +1,6 @@
 import { createMcpHandler } from "@modelcontextprotocol/server";
 import {
+  boundPublicRequestBody,
   guardPublicRequest,
   type GreatPmEnv,
 } from "./security";
@@ -11,7 +12,7 @@ import {
 const mcpHandler = createMcpHandler(() => createGreatPmServer(), {
   legacy: "stateless",
   responseMode: "json",
-  maxSubscriptions: 1,
+  maxSubscriptions: 0,
   onerror: (error) => {
     console.error(`GreatPM MCP request error: ${error.name}`);
   },
@@ -52,7 +53,11 @@ const worker: ExportedHandler<GreatPmEnv> = {
         response = rejected;
       } else {
         try {
-          response = await mcpHandler.fetch(request);
+          const boundedRequest = await boundPublicRequestBody(request);
+          response =
+            boundedRequest instanceof Response
+              ? boundedRequest
+              : await mcpHandler.fetch(boundedRequest);
         } catch (error) {
           console.error(
             `GreatPM MCP transport error: ${

@@ -7,6 +7,7 @@
   "scripts": {
     "catalog:build": "node scripts/build-catalog.mjs",
     "catalog:check": "node scripts/check-catalog.mjs",
+    "release:check-tag": "node scripts/check-release-tag.mjs",
     "smoke:remote": "node scripts/smoke-remote.mjs",
     "test": "vitest",
     "typecheck": "tsc --noEmit",

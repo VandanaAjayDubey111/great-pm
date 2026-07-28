@@ -58,6 +58,34 @@ function titleFromId(id) {
     .join(" ");
 }
 
+const nonPortablePattern =
+  /\.great-pm\/|\$\{CLAUDE_PLUGIN_ROOT\}|Agent\(|\bBash\b|(?:^|[\s`])\/pm-[a-z]|(?:^|[\s`])bd\s|```(?:bash|sh|shell)|\bscripts\//im;
+
+function makePortable(source) {
+  return source
+    .replace(
+      /`?(?:~\/)?\.great-pm\/[^`\s,)]+`?/g,
+      "the related project artifact",
+    )
+    .replace(
+      /the Open-Decision Register \(`bd` issue, label `open-decision`\)/g,
+      "the team's Open-Decision Register",
+    )
+    .replace(/\/pm-promote\s+--gate=strategy/g, "the strategy approval gate")
+    .replace(/\/pm-cost/g, "the cost forecast")
+    .replace(/\/pm-burn/g, "the burn-rate report")
+    .replace(/\/pm-digest/g, "the product digest");
+}
+
+function assertPortable(source, label) {
+  const match = source.match(nonPortablePattern);
+  if (match) {
+    throw new Error(
+      `${label} contains a non-portable public MCP reference: ${match[0].trim()}`,
+    );
+  }
+}
+
 async function buildCatalog() {
   const outputArgument = process.argv.find((argument) =>
     argument.startsWith("--output="),
@@ -87,9 +115,16 @@ async function buildCatalog() {
       entry.id,
     );
 
+    const description = makePortable(parsed.description);
+    const markdown = makePortable(parsed.markdown);
+    assertPortable(description, `Method ${entry.id} description`);
+    assertPortable(markdown, `Method ${entry.id} Markdown`);
+
     methods.push({
       id: entry.id,
       ...parsed,
+      description,
+      markdown,
       stage: entry.stage,
       tags: entry.tags,
     });
@@ -126,13 +161,18 @@ async function readContentEntries(entries, label) {
       throw new Error(`Invalid ${label} ID: ${entry.id}`);
     }
 
-    contentEntries.push({
-      id: entry.id,
-      title: entry.title,
-      markdown: (await readFile(
+    const markdown = makePortable(
+      (await readFile(
         resolve(repositoryDirectory, entry.path),
         "utf8",
       )).trim(),
+    );
+    assertPortable(markdown, `${label} ${entry.id} Markdown`);
+
+    contentEntries.push({
+      id: entry.id,
+      title: entry.title,
+      markdown,
     });
   }
 

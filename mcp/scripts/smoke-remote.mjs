@@ -2,6 +2,7 @@ import {
   Client,
   StreamableHTTPClientTransport,
 } from "@modelcontextprotocol/client";
+import { readFile } from "node:fs/promises";
 
 const endpoint = process.argv[2];
 if (!endpoint) {
@@ -13,6 +14,12 @@ if (url.protocol !== "https:" || url.pathname !== "/mcp") {
   throw new Error("Remote smoke endpoint must be an HTTPS /mcp URL.");
 }
 
+const packageMetadata = JSON.parse(
+  await readFile(new URL("../package.json", import.meta.url), "utf8"),
+);
+const expectedName = "greatpm-mcp";
+const expectedVersion = packageMetadata.version;
+
 const client = new Client({
   name: "greatpm-production-smoke",
   version: "1.0.0",
@@ -21,6 +28,7 @@ const transport = new StreamableHTTPClientTransport(url);
 
 try {
   await client.connect(transport);
+  const serverVersion = client.getServerVersion();
   const [{ tools }, { resources }, { resourceTemplates }, { prompts }] =
     await Promise.all([
       client.listTools(),
@@ -54,6 +62,8 @@ try {
   const methodText =
     "text" in method.contents[0] ? method.contents[0].text : "";
   if (
+    serverVersion?.name !== expectedName ||
+    serverVersion.version !== expectedVersion ||
     tools.length !== 3 ||
     resources.length !== 2 ||
     resourceTemplates.length !== 3 ||
@@ -71,6 +81,7 @@ try {
     JSON.stringify(
       {
         endpoint,
+        server: `${serverVersion.name}@${serverVersion.version}`,
         tools: tools.map((tool) => tool.name),
         resources: resources.length,
         resourceTemplates: resourceTemplates.length,

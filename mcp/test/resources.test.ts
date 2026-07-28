@@ -92,7 +92,7 @@ describe("GreatPM MCP resources", () => {
       ).toMatch(/PRD|Product Requirements/i);
       expect(
         "text" in document.contents[0] && document.contents[0].text,
-      ).toContain("The loop");
+      ).toContain("six-stage loop");
     } finally {
       await close();
     }

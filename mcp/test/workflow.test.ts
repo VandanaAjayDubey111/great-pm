@@ -61,6 +61,19 @@ describe("GreatPM workflow preparation", () => {
     expect(result.suggestedNextAction).toMatch(/gate:strategy/i);
   });
 
+  it("focuses on the first selected stage when current stage is excluded", () => {
+    const result = prepareWorkflow({
+      initiative: "Launch team workspaces",
+      currentStage: "discover",
+      includeStages: ["launch"],
+    });
+
+    expect(result.stages.map((stage) => stage.id)).toEqual(["launch"]);
+    expect(result.suggestedNextAction).toMatch(/launch/i);
+    expect(result.suggestedNextAction).toMatch(/gate:launch/i);
+    expect(result.suggestedNextAction).not.toMatch(/discover|gate:strategy/i);
+  });
+
   it("returns fresh values and does not mutate caller input", () => {
     const includeStages = ["discover", "define"] as const;
     const input = {

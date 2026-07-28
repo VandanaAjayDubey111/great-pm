@@ -120,14 +120,16 @@ messages refer to MCP resources and contain no host-specific commands.
 ## HTTP security
 
 The Worker validates the target Host and any browser Origin before handing a
-request to the protocol parser. Localhost, the deployed `workers.dev` hostname,
-and explicitly configured custom hosts are allowed. Public browser Origins
+request to the protocol parser. Localhost, the exact deployed `workers.dev`
+hostname, and explicitly configured custom hosts are allowed. Public browser Origins
 must use HTTPS and match the request host or explicit allowlist. Invalid
 Origins return HTTP 403 as required by the MCP transport specification.
 
-Declared request bodies over 256 KiB return HTTP 413. Application errors return
+Every POST body is counted while streaming and bodies over 256 KiB return HTTP
+413, even if `Content-Length` is absent or incorrect. Application errors return
 fixed JSON without stack traces. Responses add restrictive browser security
-headers and do not enable wildcard CORS.
+headers and do not enable wildcard CORS. The SDK subscription capacity is set
+to zero, so the stateless JSON service cannot open SSE subscription streams.
 
 These controls protect request integrity; they are not authentication. The
 server is intentionally public because it serves static read-only knowledge.

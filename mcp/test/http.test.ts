@@ -128,4 +128,42 @@ describe("GreatPM Worker HTTP interface", () => {
       await client.close();
     }
   });
+
+  it("rejects subscription streams for the stateless public server", async () => {
+    const localFetch: typeof fetch = async (input, init) => {
+      const original = new Request(input, init);
+      const headers = new Headers(original.headers);
+      headers.set("host", "localhost");
+      return invokeWorker(new Request(original, { headers }), {});
+    };
+    const transport = new StreamableHTTPClientTransport(
+      new URL("http://localhost/mcp"),
+      { fetch: localFetch },
+    );
+    const client = new Client({
+      name: "greatpm-subscription-test",
+      version: "1.0.0",
+    }, {
+      versionNegotiation: { mode: "auto" },
+    });
+
+    try {
+      await client.connect(transport);
+      let subscription:
+        | Awaited<ReturnType<Client["listen"]>>
+        | undefined;
+      let listenError: unknown;
+      try {
+        subscription = await client.listen({ toolsListChanged: true });
+      } catch (error) {
+        listenError = error;
+      }
+
+      await subscription?.close();
+      expect(subscription).toBeUndefined();
+      expect(String(listenError)).toMatch(/subscription limit/i);
+    } finally {
+      await client.close();
+    }
+  });
 });

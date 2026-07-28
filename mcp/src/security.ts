@@ -6,6 +6,9 @@ export interface GreatPmEnv {
 }
 
 const localHostnames = new Set(["localhost", "127.0.0.1", "::1"]);
+const publicHostnames = new Set([
+  "greatpm-mcp.vandana424-s.workers.dev",
+]);
 
 export function guardPublicRequest(
   request: Request,
@@ -19,7 +22,7 @@ export function guardPublicRequest(
 
   if (
     !localHostnames.has(host) &&
-    !host.endsWith(".workers.dev") &&
+    !publicHostnames.has(host) &&
     !configuredHosts.has(host)
   ) {
     return jsonError(403, "Forbidden.");
@@ -51,6 +54,45 @@ export function guardPublicRequest(
   }
 
   return null;
+}
+
+export async function boundPublicRequestBody(
+  request: Request,
+): Promise<Request | Response> {
+  if (request.method !== "POST" || !request.body) return request;
+
+  const reader = request.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let totalBytes = 0;
+
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      totalBytes += value.byteLength;
+      if (totalBytes > MAX_REQUEST_BYTES) {
+        await reader.cancel();
+        return jsonError(413, "Request body too large.");
+      }
+      chunks.push(value);
+    }
+  } catch {
+    return jsonError(400, "Invalid request body.");
+  }
+
+  const body = new Uint8Array(totalBytes);
+  let offset = 0;
+  for (const chunk of chunks) {
+    body.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+
+  return new Request(request.url, {
+    method: request.method,
+    headers: request.headers,
+    body,
+    redirect: request.redirect,
+  });
 }
 
 function validateOrigin(

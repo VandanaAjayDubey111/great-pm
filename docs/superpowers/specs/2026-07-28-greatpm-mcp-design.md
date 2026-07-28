@@ -101,7 +101,7 @@ MCP client
     | Streamable HTTP
     v
 Cloudflare Worker
-    |-- request guard: path, method, Host, Origin, content length
+    |-- request guard: path, method, Host, Origin, bounded body stream
     |-- MCP Web Standard transport (stateless, JSON responses)
     |-- GreatPM MCP server factory
            |-- tools
@@ -127,7 +127,8 @@ package manager, build, tests, and deployment do not alter plugin loading.
 - Cloudflare Workers free plan.
 - Web Standard `Request` and `Response` APIs.
 - `@modelcontextprotocol/server` 2.0.0.
-- `@modelcontextprotocol/hono` 2.0.0 and Hono 4.x.
+- The official `@modelcontextprotocol/server` 2.0.0 Worker handler directly;
+  no additional web framework is required.
 - Stateless `WebStandardStreamableHTTPServerTransport`.
 - JSON response mode because v1 has no server-initiated notifications.
 
@@ -143,7 +144,8 @@ filesystem at runtime.
 The generator:
 
 - parses YAML front matter from selected skill files;
-- preserves the Markdown body;
+- preserves the product methodology while replacing explicitly identified
+  local-only references with portable wording;
 - normalizes IDs and metadata;
 - rejects duplicate or missing IDs;
 - rejects unsafe local-execution references from public descriptions;
@@ -262,11 +264,12 @@ filesystem operations.
 ### Request controls
 
 - Only `/mcp` accepts MCP traffic.
-- Reject declared request bodies over 256 KiB with `413`.
+- Reject actual request bodies over 256 KiB with `413`, including when
+  `Content-Length` is absent or incorrect.
 - Validate `Host` against:
   - `localhost`;
   - `127.0.0.1`;
-  - the deployed `*.workers.dev` hostname;
+  - the exact deployed `greatpm-mcp.vandana424-s.workers.dev` hostname;
   - optional configured custom hostnames.
 - When an `Origin` header is present:
   - parse it as a URL;
@@ -333,7 +336,8 @@ The existing connector and adapter tests remain required and must pass unchanged
 ### Cloudflare
 
 - Worker name: `greatpm-mcp`.
-- Initial endpoint: `https://greatpm-mcp.<account-subdomain>.workers.dev/mcp`.
+- Initial endpoint:
+  `https://greatpm-mcp.vandana424-s.workers.dev/mcp`.
 - No paid bindings, Durable Objects, D1, KV, R2, Queues, Workers AI, or custom
   domain.
 - Free plan is sufficient for launch while traffic stays within its published

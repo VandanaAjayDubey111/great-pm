@@ -197,12 +197,12 @@
     {
       "id": "workflow",
       "title": "GreatPM Workflow",
-      "path": "skills/great-pm/WORKFLOW.md"
+      "path": "mcp/content/workflow.md"
     },
     {
-      "id": "harness-loops",
-      "title": "GreatPM Harness Loops",
-      "path": "docs/HARNESS-LOOPS.md"
+      "id": "human-gates",
+      "title": "GreatPM Human Gates",
+      "path": "mcp/content/human-gates.md"
     }
   ]
 }

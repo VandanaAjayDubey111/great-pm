@@ -24,6 +24,10 @@ jobs:
           cache: npm
           cache-dependency-path: mcp/package-lock.json
 
+      - name: Verify tag matches release metadata
+        working-directory: mcp
+        run: npm run release:check-tag -- "$GITHUB_REF_NAME"
+
       - name: Verify release
         working-directory: mcp
         run: |

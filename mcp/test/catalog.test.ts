@@ -3,6 +3,10 @@ import {
   listMethods,
   methodCatalog,
 } from "../src/catalog/catalog";
+import {
+  generatedDocs,
+  generatedTemplates,
+} from "../src/generated/catalog";
 
 describe("GreatPM method catalog", () => {
   it("contains a curated set of unique methods with lifecycle metadata", () => {
@@ -61,5 +65,19 @@ describe("GreatPM method catalog", () => {
 
   it("suggests close IDs when a method is unknown", () => {
     expect(() => getMethod("prd")).toThrow(/prd-authoring/i);
+  });
+
+  it("keeps all published Markdown portable across MCP clients", () => {
+    const publishedMarkdown = [
+      ...methodCatalog.map(
+        (method) => `${method.description}\n${method.markdown}`,
+      ),
+      ...generatedTemplates.map((template) => template.markdown),
+      ...generatedDocs.map((document) => document.markdown),
+    ].join("\n");
+
+    expect(publishedMarkdown).not.toMatch(
+      /\.great-pm\/|\$\{CLAUDE_PLUGIN_ROOT\}|Agent\(|\bBash\b|(?:^|[\s`])\/pm-[a-z]|(?:^|[\s`])bd\s|```(?:bash|sh|shell)|\bscripts\//im,
+    );
   });
 });
