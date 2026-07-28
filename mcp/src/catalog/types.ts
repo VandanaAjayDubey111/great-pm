@@ -19,6 +19,12 @@ export interface GeneratedMethod {
   readonly tags: readonly string[];
 }
 
+export interface GeneratedContent {
+  readonly id: string;
+  readonly title: string;
+  readonly markdown: string;
+}
+
 export interface GreatPmMethod extends GeneratedMethod {
   readonly resourceUri: `greatpm://methods/${string}`;
 }

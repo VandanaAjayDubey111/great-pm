@@ -140,5 +140,69 @@
       "stage": "cross-functional",
       "tags": ["cost", "economics", "planning"]
     }
+  ],
+  "templates": [
+    {
+      "id": "prd",
+      "title": "Product Requirements Document",
+      "path": "templates/PRD-template.md"
+    },
+    {
+      "id": "discovery-brief",
+      "title": "Discovery Brief",
+      "path": "templates/DISCOVERY-BRIEF-template.md"
+    },
+    {
+      "id": "strategy",
+      "title": "Product Strategy",
+      "path": "templates/STRATEGY-template.md"
+    },
+    {
+      "id": "roadmap",
+      "title": "Outcome Roadmap",
+      "path": "templates/ROADMAP-template.md"
+    },
+    {
+      "id": "metrics-plan",
+      "title": "Metrics Plan",
+      "path": "templates/METRICS-PLAN-template.md"
+    },
+    {
+      "id": "launch-plan",
+      "title": "Launch Plan",
+      "path": "templates/LAUNCH-PLAN-template.md"
+    },
+    {
+      "id": "experiment",
+      "title": "Experiment Plan",
+      "path": "templates/EXPERIMENT-template.md"
+    },
+    {
+      "id": "pricing-plan",
+      "title": "Pricing Plan",
+      "path": "templates/PRICING-PLAN-template.md"
+    },
+    {
+      "id": "competitive-brief",
+      "title": "Competitive Brief",
+      "path": "templates/COMPETITIVE-BRIEF-template.md"
+    },
+    {
+      "id": "gtm-plan",
+      "title": "Go-to-Market Plan",
+      "path": "templates/GTM-PLAN-template.md"
+    }
+  ],
+  "docs": [
+    {
+      "id": "workflow",
+      "title": "GreatPM Workflow",
+      "path": "skills/great-pm/WORKFLOW.md"
+    },
+    {
+      "id": "harness-loops",
+      "title": "GreatPM Harness Loops",
+      "path": "docs/HARNESS-LOOPS.md"
+    }
   ]
 }
