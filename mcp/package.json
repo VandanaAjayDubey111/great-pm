@@ -5,6 +5,8 @@
   "description": "Public read-only GreatPM Model Context Protocol server",
   "type": "module",
   "scripts": {
+    "catalog:build": "node scripts/build-catalog.mjs",
+    "catalog:check": "node scripts/check-catalog.mjs",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
     "deploy:dry": "wrangler deploy --dry-run",
