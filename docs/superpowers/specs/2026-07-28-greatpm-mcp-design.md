@@ -1,7 +1,7 @@
 # GreatPM Public MCP Server Design
 
-**Date:** 2026-07-28  
-**Status:** Approved for implementation by the repository owner  
+**Date:** 2026-07-28
+**Status:** Approved for implementation by the repository owner
 **Release target:** Public v1.0.0 on Cloudflare Workers
 
 ## 1. Outcome
