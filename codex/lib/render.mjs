@@ -5,6 +5,7 @@ export const HOST_BINDING = `## Codex host binding
 - Treat references to Claude slash workflows as the equivalently named Codex skill.
 - Before delegating to any specialist, read the \`great-pm-runtime\` skill and the selected packaged role file.
 - Treat "invoke", "assign", "delegate", "spawn", and source Agent-tool instructions as a required Codex \`spawn_agent\` call with that role and a bounded assignment.
+- Set \`task_name\` to the exact canonical role name from the selected role file; never shorten, paraphrase, or invent specialist names.
 - Store every returned agent identifier. Never call a wait tool until a spawn has returned an identifier, and wait only on identifiers returned by successful spawns.
 - If \`spawn_agent\` is unavailable or a spawn fails, report BLOCKED; do not impersonate the specialist or wait on an empty agent set.
 - Resolve bundled paths from the installed GreatPM plugin root.
@@ -57,8 +58,11 @@ ${converted}`;
 }
 
 export function renderWorkflowUi(workflowName) {
+  const displayName = workflowName === 'pm-grill'
+    ? 'GreatPM: Grill Me'
+    : 'GreatPM workflow';
   return `interface:
-  display_name: "GreatPM workflow"
+  display_name: "${displayName}"
   short_description: "Run a GreatPM product-management workflow"
   default_prompt: "Use $${workflowName} on my current product initiative."
 policy:

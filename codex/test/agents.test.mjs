@@ -27,3 +27,27 @@ test('all 48 specialist roles are packaged for Codex subagents', async () => {
     await rm(temp, { recursive: true, force: true });
   }
 });
+
+test('Codex uses exact Claude specialist names for spawned tasks', async () => {
+  const temp = await mkdtemp(path.join(os.tmpdir(), 'greatpm-agent-names-'));
+  try {
+    await packagePlugin({
+      sourceRoot: new URL('../../', import.meta.url),
+      outputRoot: temp
+    });
+    const runtime = await readFile(
+      path.join(temp, 'skills', 'great-pm-runtime', 'SKILL.md'),
+      'utf8'
+    );
+    const grillMe = await readFile(
+      path.join(temp, 'agents', 'grill-me.md'),
+      'utf8'
+    );
+
+    assert.match(runtime, /task_name.*exact canonical role name/i);
+    assert.match(runtime, /`grill-me`, never `grill`/);
+    assert.match(grillMe, /^name: grill-me$/m);
+  } finally {
+    await rm(temp, { recursive: true, force: true });
+  }
+});

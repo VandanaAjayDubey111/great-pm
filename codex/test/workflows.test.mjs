@@ -23,13 +23,17 @@ test('all 34 workflows are installable Codex skills', async () => {
       assert.match(text, /## Codex host binding/);
       assert.match(text, /read the `great-pm-runtime` skill/);
       assert.match(text, /Never call a wait tool until a spawn has returned/);
+      assert.match(text, /task_name.*exact canonical role name/i);
       assert.doesNotMatch(text, /model: opus/);
       assert.doesNotMatch(text, /allowed-tools:/);
       assert.doesNotMatch(text, /CLAUDE_PLUGIN_ROOT/);
       assert.doesNotMatch(text, /\$HOME\/great-pm\//);
 
       const ui = await readFile(path.join(directory, 'agents', 'openai.yaml'), 'utf8');
-      assert.match(ui, /display_name: "GreatPM workflow"/);
+      const displayName = name === 'pm-grill'
+        ? 'GreatPM: Grill Me'
+        : 'GreatPM workflow';
+      assert.ok(ui.includes(`display_name: "${displayName}"`));
       assert.ok(
         ui.includes(
           `default_prompt: "Use $${name} on my current product initiative."`
@@ -42,6 +46,13 @@ test('all 34 workflows are installable Codex skills', async () => {
       parity.workflows.filter((name) => skillDirs.includes(name)),
       parity.workflows
     );
+
+    const grillUi = await readFile(
+      path.join(temp, 'skills', 'pm-grill', 'agents', 'openai.yaml'),
+      'utf8'
+    );
+    assert.match(grillUi, /display_name: "GreatPM: Grill Me"/);
+    assert.match(grillUi, /default_prompt: "Use \$pm-grill/);
   } finally {
     await rm(temp, { recursive: true, force: true });
   }
