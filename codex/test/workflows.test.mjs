@@ -21,8 +21,12 @@ test('all 34 workflows are installable Codex skills', async () => {
       const text = await readFile(path.join(directory, 'SKILL.md'), 'utf8');
       assert.match(text, new RegExp(`^---\\nname: ${name}\\n`, 'm'));
       assert.match(text, /## Codex host binding/);
+      assert.match(text, /read the `great-pm-runtime` skill/);
+      assert.match(text, /Never call a wait tool until a spawn has returned/);
       assert.doesNotMatch(text, /model: opus/);
       assert.doesNotMatch(text, /allowed-tools:/);
+      assert.doesNotMatch(text, /CLAUDE_PLUGIN_ROOT/);
+      assert.doesNotMatch(text, /\$HOME\/great-pm\//);
 
       const ui = await readFile(path.join(directory, 'agents', 'openai.yaml'), 'utf8');
       assert.match(ui, /display_name: "GreatPM workflow"/);

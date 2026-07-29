@@ -6,7 +6,10 @@ description: "The great-pm operating model — the 6-stage product loop, the 3 h
 ## Codex host binding
 
 - Treat references to Claude slash workflows as the equivalently named Codex skill.
-- Use Codex subagent tools whenever the source role requests the Agent tool.
+- Before delegating to any specialist, read the `great-pm-runtime` skill and the selected packaged role file.
+- Treat "invoke", "assign", "delegate", "spawn", and source Agent-tool instructions as a required Codex `spawn_agent` call with that role and a bounded assignment.
+- Store every returned agent identifier. Never call a wait tool until a spawn has returned an identifier, and wait only on identifiers returned by successful spawns.
+- If `spawn_agent` is unavailable or a spawn fails, report BLOCKED; do not impersonate the specialist or wait on an empty agent set.
 - Resolve bundled paths from the installed GreatPM plugin root.
 - Ignore Claude-only model aliases, colors, turn limits, and tool allowlists.
 - Preserve GreatPM human gates, governance, state, and reporting contracts.
@@ -63,7 +66,7 @@ directive at the next session start (it is injected into context). See
 - **Learning loop (close every cycle).** Measure & Learn is NOT done until
   `continuous-learner` has run and written to `.great-pm/lessons.md`. SessionEnd
   drops `.great-pm/.learn-pending`; the next SessionStart injects an ACTION-REQUIRED
-  directive — run the learning pass (or `/pm-learn`) and `rm .great-pm/.learn-pending`
+  directive — run the learning pass (or `$pm-learn`) and `rm .great-pm/.learn-pending`
   before advancing. A cycle that skips learning is incomplete.
 - **Build-feedback loop (close before the next Define).** After a build, capture
   what the spec got wrong into `.great-pm/build-feedback/<initiative>.md`.
@@ -75,14 +78,14 @@ directive at the next session start (it is injected into context). See
   `.great-pm/brain.md` at cycle close. SessionStart warns when brain is older than
   the latest verdict.
 - **Gates stay human (do not "fix" the bottleneck by auto-approving).** The human
-  approving the few gates IS the product. Batch decisions via `/pm-inbox`; never
+  approving the few gates IS the product. Batch decisions via `$pm-inbox`; never
   auto-pass a gate.
-- **Orchestrator self-check.** pm-lead MUST verify it has the Agent tool before
+- **Orchestrator self-check.** pm-lead MUST verify it has the Codex subagent tools before
   delegating. If it cannot spawn specialists, it states so loudly and does not
   silently impersonate them.
 - **Recurring GC.** Run `bash scripts/great-pm-skill-doctor.sh` (skill overload +
   dangling cross-links + depth gaps) and periodically re-run `skill-scout` so the
-  79-skill library does not rot. `/pm-doctor` wraps these checks.
+  79-skill library does not rot. `$pm-doctor` wraps these checks.
 
 ## Open decisions — never lose a question (MANDATORY)
 
@@ -108,9 +111,9 @@ drift"). Questions live in beads, not in prose, so they cannot scroll away.
   Silent defaults are forbidden. When the human answers, if the answer differs
   from the assumed default, the dependent artefact is flagged for revision.
 - **SURFACE.** SessionStart injects open decisions as an ACTION-REQUIRED
-  directive; `/pm-inbox` lists them; pm-lead re-surfaces before advancing a stage.
+  directive; `$pm-inbox` lists them; pm-lead re-surfaces before advancing a stage.
 - **RESOLVE + REMEMBER.** When answered: record the answer in the bd issue,
-  promote durable ones to `~/.great-pm/decisions.md` (via `/pm-crystallize`),
+  promote durable ones to `~/.great-pm/decisions.md` (via `$pm-crystallize`),
   close the issue (unblocks the gate), and revise any artefact built on a now-
   wrong default.
 
@@ -148,4 +151,4 @@ Open-Decision Register), pm-auditor (process health), strategy-analyst
 (situation-analysis frameworks feeding product-strategist), cross-cutting agents
 (stakeholder-comms, tradeoff-arbiter, continuous-learner, skill-scout), plus
 product-archetype and domain reviewers. See the great-pm design doc for the full
-roster. (Count verified against ~/great-pm/agents/ on 2026-05-29.)
+roster. (Count verified against ${PLUGIN_ROOT}/agents/ on 2026-05-29.)

@@ -5,7 +5,7 @@ const table = (headers, rows) => {
   return `${heading}\n${divider}\n${body}`;
 };
 
-export function renderParityDoc(parity) {
+export function renderParityDoc(parity, smokeEvidence = null) {
   const roles = parity.agents.map((name) => [
     `\`${name}\``,
     `\`plugins/great-pm/agents/${name}.md\``
@@ -35,6 +35,26 @@ export function renderParityDoc(parity) {
     ['Evidence', '`cd codex && npm test && npm run check:generated`', 'Parity and drift gates']
   ];
 
+  const smoke = smokeEvidence
+    ? `
+## Local smoke evidence
+
+- Date: ${smokeEvidence.date}
+- Platform: ${smokeEvidence.platform}
+- CLI: ${smokeEvidence.cliVersion}
+- Desktop app: ${smokeEvidence.desktopVersion}
+
+${table(
+  ['Check', 'Result', 'Evidence'],
+  smokeEvidence.results.map((result) => [
+    result.check,
+    result.status,
+    result.evidence
+  ])
+)}
+`
+    : '';
+
   return `# GreatPM Codex Parity
 
 This record is generated from \`plugins/great-pm/codex/parity.json\`. The
@@ -58,5 +78,6 @@ ${table(['Workflow', 'Codex invocation', 'Packaged path'], workflows)}
 ## Operating-system capabilities and evidence
 
 ${table(['Capability', 'Contract', 'Evidence'], runtime)}
-`;
+${smoke}
+`.trimEnd() + '\n';
 }

@@ -6,7 +6,10 @@ description: "Mark a great-pm agent as deprecated. Adds a deprecation banner to 
 ## Codex host binding
 
 - Treat references to Claude slash workflows as the equivalently named Codex skill.
-- Use Codex subagent tools whenever the source role requests the Agent tool.
+- Before delegating to any specialist, read the `great-pm-runtime` skill and the selected packaged role file.
+- Treat "invoke", "assign", "delegate", "spawn", and source Agent-tool instructions as a required Codex `spawn_agent` call with that role and a bounded assignment.
+- Store every returned agent identifier. Never call a wait tool until a spawn has returned an identifier, and wait only on identifiers returned by successful spawns.
+- If `spawn_agent` is unavailable or a spawn fails, report BLOCKED; do not impersonate the specialist or wait on an empty agent set.
 - Resolve bundled paths from the installed GreatPM plugin root.
 - Ignore Claude-only model aliases, colors, turn limits, and tool allowlists.
 - Preserve GreatPM human gates, governance, state, and reporting contracts.
@@ -26,7 +29,7 @@ gracefully — never delete.
 
 ```bash
 AGENT="${1:?usage: $pm-agent-retire <agent-name> --reason='...' [--replacement=<agent>]}"
-AGENT_FILE="$HOME/great-pm/agents/${AGENT}.md"
+AGENT_FILE="${PLUGIN_ROOT}/agents/${AGENT}.md"
 [ -f "$AGENT_FILE" ] && echo "AGENT_OK" || echo "NO_AGENT"
 ```
 

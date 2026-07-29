@@ -6,9 +6,10 @@ const root = new URL('../../', import.meta.url);
 const read = (relative) => readFile(new URL(relative, root), 'utf8');
 
 test('Codex public installation and operations are documented', async () => {
-  const [guide, readme, workflow] = await Promise.all([
+  const [guide, readme, parity, workflow] = await Promise.all([
     read('docs/CODEX.md'),
     read('README.md'),
+    read('docs/CODEX-PARITY.md'),
     read('.github/workflows/codex-plugin-ci.yml')
   ]);
 
@@ -22,6 +23,8 @@ test('Codex public installation and operations are documented', async () => {
   assert.match(guide, /hook review/i);
   assert.match(readme, /Codex desktop and Codex CLI/);
   assert.match(readme, /docs\/CODEX\.md/);
+  assert.match(parity, /CLI smoke \| PASS/);
+  assert.match(parity, /Desktop UI \| BLOCKED/);
   assert.match(workflow, /npm run check:generated/);
   assert.match(workflow, /great-pm-skill-doctor\.sh/);
 });

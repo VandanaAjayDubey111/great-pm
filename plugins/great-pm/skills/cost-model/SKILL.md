@@ -6,7 +6,10 @@ description: "Standardized cost-estimation framework for great-pm initiatives. F
 ## Codex host binding
 
 - Treat references to Claude slash workflows as the equivalently named Codex skill.
-- Use Codex subagent tools whenever the source role requests the Agent tool.
+- Before delegating to any specialist, read the `great-pm-runtime` skill and the selected packaged role file.
+- Treat "invoke", "assign", "delegate", "spawn", and source Agent-tool instructions as a required Codex `spawn_agent` call with that role and a bounded assignment.
+- Store every returned agent identifier. Never call a wait tool until a spawn has returned an identifier, and wait only on identifiers returned by successful spawns.
+- If `spawn_agent` is unavailable or a spawn fails, report BLOCKED; do not impersonate the specialist or wait on an empty agent set.
 - Resolve bundled paths from the installed GreatPM plugin root.
 - Ignore Claude-only model aliases, colors, turn limits, and tool allowlists.
 - Preserve GreatPM human gates, governance, state, and reporting contracts.
@@ -14,8 +17,8 @@ description: "Standardized cost-estimation framework for great-pm initiatives. F
 
 # Cost model — make great-pm cost claims defensible
 
-great-pm reports cost numbers on the board (via /pm-cost, /pm-burn,
-/pm-digest). Those numbers MUST be auditable. The classic mistake: a
+great-pm reports cost numbers on the board (via $pm-cost, $pm-burn,
+$pm-digest). Those numbers MUST be auditable. The classic mistake: a
 shiny "1000× human equivalent" claim that doesn't survive scrutiny.
 This skill defines the format and the discipline.
 
@@ -138,7 +141,7 @@ For initiatives projected to cost > $50 of great-pm LLM spend, open a
 cost-aware gate. Use the template:
 
 ```markdown
-## /pm-cost forecast
+## $pm-cost forecast
 
 | Stage | Agents fired | LLM cost | Human equiv |
 |---|---|---|---|
@@ -197,8 +200,8 @@ Ratio = 1800 / 1.2 = **1,500×**. High but defensible at current Opus pricing �
 | Agent / command | What it pulls |
 |---|---|
 | ai-cost-optimizer | Per-call reference; pipeline summation |
-| /pm-cost | Format + methodology guidance |
-| /pm-burn | Cost tracking + savings ratio rules |
+| $pm-cost | Format + methodology guidance |
+| $pm-burn | Cost tracking + savings ratio rules |
 | ai-product-strategist | Cost-as-strategic-input (when modeling moat) |
 | harness-engineer-pm | Audit when claims look implausibly high |
 

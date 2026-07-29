@@ -36,5 +36,8 @@ test('human-readable parity record is generated from parity metadata', async () 
     new URL('../../docs/CODEX-PARITY.md', import.meta.url),
     'utf8'
   );
-  assert.equal(record, renderParityDoc(parity));
+  const smokeEvidence = JSON.parse(
+    await readFile(new URL('../smoke-evidence.json', import.meta.url), 'utf8')
+  );
+  assert.equal(record, renderParityDoc(parity, smokeEvidence));
 });

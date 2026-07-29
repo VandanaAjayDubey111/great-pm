@@ -148,7 +148,7 @@ small, isolated, and reversible.
 
 6. **Execute carve-out swaps** (only the ones that passed step 4):
    ```bash
-   AGENT_FILE="$HOME/great-pm/agents/<agent>.md"
+   AGENT_FILE="${PLUGIN_ROOT}/agents/<agent>.md"
    BEFORE=$(shasum -a 256 "$AGENT_FILE" | awk '{print $1}')
    # ... Edit the skills: line only ...
    AFTER=$(shasum -a 256 "$AGENT_FILE" | awk '{print $1}')

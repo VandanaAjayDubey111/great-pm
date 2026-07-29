@@ -21,7 +21,10 @@ try {
   const parity = JSON.parse(
     await readFile(path.join(temp, 'codex', 'parity.json'), 'utf8')
   );
-  const expectedDoc = renderParityDoc(parity);
+  const smokeEvidence = JSON.parse(
+    await readFile(new URL('../smoke-evidence.json', import.meta.url), 'utf8')
+  );
+  const expectedDoc = renderParityDoc(parity, smokeEvidence);
   const actualDoc = await readFile(
     new URL('../../docs/CODEX-PARITY.md', import.meta.url),
     'utf8'

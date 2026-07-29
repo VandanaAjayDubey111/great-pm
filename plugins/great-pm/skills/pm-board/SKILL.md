@@ -6,7 +6,10 @@ description: "Open the great-pm board — a native, zero-dependency project boar
 ## Codex host binding
 
 - Treat references to Claude slash workflows as the equivalently named Codex skill.
-- Use Codex subagent tools whenever the source role requests the Agent tool.
+- Before delegating to any specialist, read the `great-pm-runtime` skill and the selected packaged role file.
+- Treat "invoke", "assign", "delegate", "spawn", and source Agent-tool instructions as a required Codex `spawn_agent` call with that role and a bounded assignment.
+- Store every returned agent identifier. Never call a wait tool until a spawn has returned an identifier, and wait only on identifiers returned by successful spawns.
+- If `spawn_agent` is unavailable or a spawn fails, report BLOCKED; do not impersonate the specialist or wait on an empty agent set.
 - Resolve bundled paths from the installed GreatPM plugin root.
 - Ignore Claude-only model aliases, colors, turn limits, and tool allowlists.
 - Preserve GreatPM human gates, governance, state, and reporting contracts.
@@ -19,7 +22,7 @@ You are the great-pm `$pm-board` command. Open the native great-pm board.
 1. Resolve the plugin root and register the current project so the board's
    switcher can find it:
    ```bash
-   ROOT="${CLAUDE_PLUGIN_ROOT:-$HOME/great-pm}"
+   ROOT="${PLUGIN_ROOT}"
    REG="$HOME/.great-pm/projects.json"
    mkdir -p "$HOME/.great-pm"
    CWD="$(pwd)"

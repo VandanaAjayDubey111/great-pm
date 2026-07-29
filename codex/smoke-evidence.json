@@ -1,0 +1,53 @@
+{
+  "date": "2026-07-29",
+  "platform": "macOS 26.5.1 arm64",
+  "cliVersion": "codex-cli 0.146.0-alpha.3.1",
+  "desktopVersion": "26.721.41059 (build 5848)",
+  "results": [
+    {
+      "check": "CLI smoke",
+      "status": "PASS",
+      "evidence": "Local marketplace added; great-pm@great-pm 1.1.0 installed and enabled."
+    },
+    {
+      "check": "Workflow discovery",
+      "status": "PASS",
+      "evidence": "$pm-help loaded from the installed cache and reported all 34 workflows."
+    },
+    {
+      "check": "Hooks",
+      "status": "PASS",
+      "evidence": "Reviewed hooks seeded brain.md, wrote session logs, and produced HANDOFF.md."
+    },
+    {
+      "check": "Subagent host capability",
+      "status": "PASS",
+      "evidence": "Codex multi_agent_v2 spawn probe returned READY."
+    },
+    {
+      "check": "Packaged specialist completion",
+      "status": "PARTIAL",
+      "evidence": "query-refiner-pm launched under the runtime contract; repeated Codex stream resets prevented collection of its final verdict."
+    },
+    {
+      "check": "State resume",
+      "status": "PASS",
+      "evidence": "A fresh $pm-resume task read the saved branch, commit, HANDOFF.md, and next workflow."
+    },
+    {
+      "check": "Board",
+      "status": "PASS",
+      "evidence": "Packaged server returned the UI and product document API on localhost; missing Beads state surfaced explicitly."
+    },
+    {
+      "check": "Full live $pm-start to gate:strategy",
+      "status": "BLOCKED",
+      "evidence": "Not completed after repeated Codex response-stream resets during the specialist smoke run."
+    },
+    {
+      "check": "Desktop UI",
+      "status": "BLOCKED",
+      "evidence": "Plugin is installed in shared Codex configuration; this environment forbids Computer Use against com.openai.codex, so Plugins-directory discovery and hook trust need manual confirmation."
+    }
+  ]
+}

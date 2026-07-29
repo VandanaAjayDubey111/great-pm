@@ -9,9 +9,12 @@ const result = await packagePlugin({
 const parity = JSON.parse(
   await readFile(new URL('../../plugins/great-pm/codex/parity.json', import.meta.url), 'utf8')
 );
+const smokeEvidence = JSON.parse(
+  await readFile(new URL('../smoke-evidence.json', import.meta.url), 'utf8')
+);
 await writeFile(
   new URL('../../docs/CODEX-PARITY.md', import.meta.url),
-  renderParityDoc(parity),
+  renderParityDoc(parity, smokeEvidence),
   'utf8'
 );
 process.stdout.write(`${JSON.stringify(result)}\n`);

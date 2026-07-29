@@ -196,3 +196,22 @@ specialist roles, 79 product-management skills,
 | Adapters | `plugins/great-pm/adapters/` | Shared host-neutral adapters |
 | Templates | 26 packaged templates | `plugins/great-pm/templates/` |
 | Evidence | `cd codex && npm test && npm run check:generated` | Parity and drift gates |
+
+## Local smoke evidence
+
+- Date: 2026-07-29
+- Platform: macOS 26.5.1 arm64
+- CLI: codex-cli 0.146.0-alpha.3.1
+- Desktop app: 26.721.41059 (build 5848)
+
+| Check | Result | Evidence |
+| --- | --- | --- |
+| CLI smoke | PASS | Local marketplace added; great-pm@great-pm 1.1.0 installed and enabled. |
+| Workflow discovery | PASS | $pm-help loaded from the installed cache and reported all 34 workflows. |
+| Hooks | PASS | Reviewed hooks seeded brain.md, wrote session logs, and produced HANDOFF.md. |
+| Subagent host capability | PASS | Codex multi_agent_v2 spawn probe returned READY. |
+| Packaged specialist completion | PARTIAL | query-refiner-pm launched under the runtime contract; repeated Codex stream resets prevented collection of its final verdict. |
+| State resume | PASS | A fresh $pm-resume task read the saved branch, commit, HANDOFF.md, and next workflow. |
+| Board | PASS | Packaged server returned the UI and product document API on localhost; missing Beads state surfaced explicitly. |
+| Full live $pm-start to gate:strategy | BLOCKED | Not completed after repeated Codex response-stream resets during the specialist smoke run. |
+| Desktop UI | BLOCKED | Plugin is installed in shared Codex configuration; this environment forbids Computer Use against com.openai.codex, so Plugins-directory discovery and hook trust need manual confirmation. |
