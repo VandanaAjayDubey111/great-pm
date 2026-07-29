@@ -32,6 +32,13 @@ const PORTABLE_FILES = [
   'SECURITY.md'
 ];
 
+const PORTABLE_SCRIPTS = [
+  'great-pm',
+  'great-pm-connect',
+  'great-pm-session-start.sh',
+  'great-pm-skill-doctor.sh'
+];
+
 async function copyPortableRuntime(source, output) {
   for (const directory of PORTABLE_DIRECTORIES) {
     await cp(path.join(source, directory), path.join(output, directory), {
@@ -54,10 +61,12 @@ async function copyPortableRuntime(source, output) {
   );
   const outputScripts = path.join(output, 'scripts');
   await mkdir(outputScripts, { recursive: true });
-  await copyFile(
-    path.join(source, 'scripts', 'great-pm-session-start.sh'),
-    path.join(outputScripts, 'great-pm-session-start.sh')
-  );
+  for (const script of PORTABLE_SCRIPTS) {
+    await copyFile(
+      path.join(source, 'scripts', script),
+      path.join(outputScripts, script)
+    );
+  }
   await copyFile(
     path.join(source, 'codex', 'runtime', 'doctor.mjs'),
     path.join(outputScripts, 'great-pm-codex-doctor.mjs')
