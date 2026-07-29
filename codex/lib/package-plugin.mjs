@@ -46,6 +46,18 @@ async function copyPortableRuntime(source, output) {
   for (const file of PORTABLE_FILES) {
     await copyFile(path.join(source, file), path.join(output, file));
   }
+
+  await cp(
+    path.join(source, 'codex', 'hooks'),
+    path.join(output, 'hooks'),
+    { recursive: true }
+  );
+  const outputScripts = path.join(output, 'scripts');
+  await mkdir(outputScripts, { recursive: true });
+  await copyFile(
+    path.join(source, 'scripts', 'great-pm-session-start.sh'),
+    path.join(outputScripts, 'great-pm-session-start.sh')
+  );
 }
 
 async function renderProductSkills(source, output) {

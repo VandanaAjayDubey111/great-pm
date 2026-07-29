@@ -1,0 +1,65 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${PLUGIN_ROOT}/scripts/great-pm-session-start.sh\"",
+            "timeout": 20,
+            "statusMessage": "Loading GreatPM product context"
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${PLUGIN_ROOT}/hooks/subagent-context.sh\"",
+            "timeout": 5,
+            "statusMessage": "Loading GreatPM specialist context"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${PLUGIN_ROOT}/hooks/pre-compact.sh\"",
+            "timeout": 15,
+            "statusMessage": "Saving GreatPM handoff"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${PLUGIN_ROOT}/hooks/session-end.sh\"",
+            "timeout": 3,
+            "statusMessage": "Saving GreatPM session"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|apply_patch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${PLUGIN_ROOT}/hooks/pre-tool-use.mjs\"",
+            "timeout": 5,
+            "statusMessage": "Running GreatPM safety check"
+          }
+        ]
+      }
+    ]
+  }
+}
