@@ -12,7 +12,7 @@ its work straight into the tools you already live in: **Notion, Slack, Linear,
 Jira**, two-way, bring-your-own-token, **$0 to operate** (see
 [**Connect your tools**](#connect-your-tools)).
 
-**Status:** Claude Code v1.0.0 is shipped. Codex v1.1.0 is a release
+**Status:** Claude Code v1.0.0 is shipped. Codex v1.1.1 is a release
 candidate pending final desktop sign-off. **48 agents · 79 skills · 34 commands/workflows** · the 6-stage loop · a native project board.
 Install from this repo (see **Install** below).
 
@@ -202,7 +202,7 @@ otherwise it proposes. Every autonomous swap is logged and reversible.
 
 ## Status
 
-**Claude Code v1.0.0 is shipped; Codex v1.1.0 is a release candidate pending
+**Claude Code v1.0.0 is shipped; Codex v1.1.1 is a release candidate pending
 final desktop sign-off.** The package contains 48 agents (6-stage loop +
 critical quartet + AI-PM pack + archetype/domain reviewers), 79 skills, the
 6-stage loop with 3 human gates, the self-correcting loops (learning · feedback
