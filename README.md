@@ -69,7 +69,7 @@ A product team in software:
 - **pm-reviewer** stress-tests every critical decision
 - **pm-lead** orchestrates them all
 - …plus a self-improvement loop (`continuous-learner` + `skill-scout`)
-  and 29 specialist agents (AI-PM pack + archetype reviewers).
+  and 29 additional specialist agents (AI-PM pack + archetype reviewers; 48 agents total).
 
 ## Screenshots
 

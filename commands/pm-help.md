@@ -113,4 +113,4 @@ descriptions).
 
 ## Reporting
 
-- **DONE**: `DONE: great-pm commands listed (33 total).`
+- **DONE**: `DONE: great-pm commands listed (34 total).`

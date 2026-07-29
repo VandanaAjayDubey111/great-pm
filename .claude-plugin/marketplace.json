@@ -11,7 +11,7 @@
     {
       "name": "great-pm",
       "source": ".",
-      "description": "48 specialist PM agents, 75 skills, and a 6-stage product loop (Discover → Strategize → Prioritize → Define → Launch → Measure) with human gates. The repo root is the plugin.",
+      "description": "48 specialist PM agents, 79 skills, and a 6-stage product loop (Discover → Strategize → Prioritize → Define → Launch → Measure) with human gates. The repo root is the plugin.",
       "version": "1.0.0",
       "author": { "name": "Vandana Dubey" },
       "keywords": ["product-management", "ai-pm", "multi-agent", "orchestration"]

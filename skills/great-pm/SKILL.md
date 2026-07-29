@@ -81,7 +81,7 @@ directive at the next session start (it is injected into context). See
   silently impersonate them.
 - **Recurring GC.** Run `bash scripts/great-pm-skill-doctor.sh` (skill overload +
   dangling cross-links + depth gaps) and periodically re-run `skill-scout` so the
-  75-skill library does not rot. `/pm-doctor` wraps these checks.
+  79-skill library does not rot. `/pm-doctor` wraps these checks.
 
 ## Open decisions — never lose a question (MANDATORY)
 
@@ -139,7 +139,7 @@ skill.
 
 ## Agent roster
 
-47 agents installed: the 6-stage loop team (pm-lead orchestrator + Discover/
+48 agents installed: the 6-stage loop team (pm-lead orchestrator + Discover/
 Strategize/Prioritize/Define/Launch/Measure specialists), the critical trio
 (pm-reviewer — reviews packages; pm-advisor — outside opinion on the bet;
 devils-advocate — interrogates assumptions + the human's framing, feeds the
