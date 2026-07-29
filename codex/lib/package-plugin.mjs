@@ -58,6 +58,10 @@ async function copyPortableRuntime(source, output) {
     path.join(source, 'scripts', 'great-pm-session-start.sh'),
     path.join(outputScripts, 'great-pm-session-start.sh')
   );
+  await copyFile(
+    path.join(source, 'codex', 'runtime', 'doctor.mjs'),
+    path.join(outputScripts, 'great-pm-codex-doctor.mjs')
+  );
 }
 
 async function renderProductSkills(source, output) {

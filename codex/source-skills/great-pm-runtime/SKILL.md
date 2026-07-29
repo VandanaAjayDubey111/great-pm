@@ -5,6 +5,12 @@ description: Use when a GreatPM workflow needs to select, spawn, coordinate, or 
 
 # GreatPM Codex Runtime
 
+Before starting a workflow, run:
+
+`node ../../scripts/great-pm-codex-doctor.mjs`
+
+If it reports an uninitialized workspace, stop and present its exact next step.
+
 1. Resolve the selected role under `../../agents/`; for example, the
    orchestrator role is `../../agents/pm-lead.md`.
 2. Spawn the role with the initiative, expected artefact, dependencies,
