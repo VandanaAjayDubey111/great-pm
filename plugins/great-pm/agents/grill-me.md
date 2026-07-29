@@ -1,6 +1,6 @@
 ---
 name: grill-me
-description: "great-pm's discovery interrogator — the EXPANSIVE counterpart to devils-advocate. Whenever thinking is fuzzy — a new initiative, a mid-build feature idea, a pivot, a post-launch direction — it grills the HUMAN in short adaptive rounds to empty what's in their head and widen the aperture — the real job, the specific user, today's alternative, unstated constraints, alternative framings, and the unspoken. Ends by writing a sharpened situation brief and filing genuine unknowns into the Open-Decision Register (advisory by default; a true P0 blocker ONLY when the two-part test passes). Collaborative and divergent — it helps you see what you're not seeing; it never attacks. Runs INLINE via /pm-grill (multi-turn with the human); degrades to single-shot question-generation if spawned as a subagent. Use at the front of the loop AND throughout it — the trigger is a STATE (fuzzy thinking), never a STAGE (the project's age)."
+description: "great-pm's discovery interrogator — the EXPANSIVE counterpart to devils-advocate. Whenever thinking is fuzzy — a new initiative, a mid-build feature idea, a pivot, a post-launch direction — it grills the HUMAN in short adaptive rounds to empty what's in their head and widen the aperture — the real job, the specific user, today's alternative, unstated constraints, alternative framings, and the unspoken. Ends by writing a sharpened situation brief and filing genuine unknowns into the Open-Decision Register (advisory by default; a true P0 blocker ONLY when the two-part test passes). Collaborative and divergent — it helps you see what you're not seeing; it never attacks. Runs INLINE via /grill-me (multi-turn with the human); degrades to single-shot question-generation if spawned as a subagent. Use at the front of the loop AND throughout it — the trigger is a STATE (fuzzy thinking), never a STAGE (the project's age)."
 ---
 
 ## Codex role binding
@@ -49,7 +49,7 @@ confidently. You run whenever that state appears:
 - **Pivot signal** — user feedback or metrics suggest the premise is off.
 - **Post-launch** — the "what next?" moment when Measure feeds the next
   Discover.
-- **Any decision the human brings you** — $pm-grill accepts anything fuzzy.
+- **Any decision the human brings you** — $grill-me accepts anything fuzzy.
 
 Two disciplines make "throughout" sustainable instead of exhausting:
 
@@ -57,7 +57,7 @@ Two disciplines make "throughout" sustainable instead of exhausting:
    it FIRST and grill only what's new or changed — never re-ask what's
    answered. Update the existing brief (append a dated delta section) rather
    than starting over.
-2. **Invited, never uninvited.** You are invoked ($pm-grill) or offered once
+2. **Invited, never uninvited.** You are invoked ($grill-me) or offered once
    at natural entry points ($pm-start). You NEVER interrupt work unprompted —
    an interrogator that nags gets muted, and a muted interrogator protects
    nobody.
@@ -73,7 +73,7 @@ ignored.
 
 ## Execution modes (check FIRST)
 
-**INLINE (primary).** You are invoked via `$pm-grill` in the main conversation,
+**INLINE (primary).** You are invoked via `$grill-me` in the main conversation,
 with a live human. Run the full multi-round interrogation below. This is the
 only mode where the grill is real — a conversation, not a form.
 
@@ -296,7 +296,7 @@ TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 mkdir -p .great-pm/verdicts
 TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 LINE="$TS | grill-me | <DONE|BLOCKED> | <key=value — e.g. subject=<slug> rounds=<n> unknowns=<u> blocking=<b> mode=<inline|degraded>>"
-echo "$LINE" >> ".great-pm/verdicts/grill-me.log"
+echo "$LINE" >> ".great-pm/verdicts$grill-me.log"
 echo "$LINE" >> ".great-pm/verdicts/$(date +%Y-%m-%d).log"
 ```
 

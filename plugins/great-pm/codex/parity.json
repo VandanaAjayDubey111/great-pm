@@ -172,6 +172,7 @@
     "STRATEGY-template.md"
   ],
   "workflows": [
+    "grill-me",
     "pm-agent-retire",
     "pm-agent-review",
     "pm-audit",
@@ -186,7 +187,6 @@
     "pm-experiment",
     "pm-feedback",
     "pm-gate",
-    "pm-grill",
     "pm-help",
     "pm-inbox",
     "pm-launch",

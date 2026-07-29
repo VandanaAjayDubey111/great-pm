@@ -26,7 +26,7 @@ descriptions.
 great-pm — your product team in software
 
 THE 6-STAGE LOOP
-  $pm-grill "<idea>"             grill-me interrogates YOU — short adaptive rounds
+  $grill-me "<idea>"             grill-me interrogates YOU — short adaptive rounds
                                  that widen a fuzzy idea and surface unknowns before
                                  you build on it. Works at ANY stage (new initiative,
                                  mid-build feature, pivot, post-launch). Ends in a

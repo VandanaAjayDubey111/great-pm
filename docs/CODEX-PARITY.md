@@ -147,6 +147,7 @@ specialist roles, 79 product-management skills,
 
 | Workflow | Codex invocation | Packaged path |
 | --- | --- | --- |
+| `grill-me` | `$grill-me` | `plugins/great-pm/skills/grill-me/SKILL.md` |
 | `pm-agent-retire` | `$pm-agent-retire` | `plugins/great-pm/skills/pm-agent-retire/SKILL.md` |
 | `pm-agent-review` | `$pm-agent-review` | `plugins/great-pm/skills/pm-agent-review/SKILL.md` |
 | `pm-audit` | `$pm-audit` | `plugins/great-pm/skills/pm-audit/SKILL.md` |
@@ -161,7 +162,6 @@ specialist roles, 79 product-management skills,
 | `pm-experiment` | `$pm-experiment` | `plugins/great-pm/skills/pm-experiment/SKILL.md` |
 | `pm-feedback` | `$pm-feedback` | `plugins/great-pm/skills/pm-feedback/SKILL.md` |
 | `pm-gate` | `$pm-gate` | `plugins/great-pm/skills/pm-gate/SKILL.md` |
-| `pm-grill` | `$pm-grill` | `plugins/great-pm/skills/pm-grill/SKILL.md` |
 | `pm-help` | `$pm-help` | `plugins/great-pm/skills/pm-help/SKILL.md` |
 | `pm-inbox` | `$pm-inbox` | `plugins/great-pm/skills/pm-inbox/SKILL.md` |
 | `pm-launch` | `$pm-launch` | `plugins/great-pm/skills/pm-launch/SKILL.md` |

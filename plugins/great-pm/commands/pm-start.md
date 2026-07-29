@@ -31,10 +31,10 @@ If `PROJECT_OK` → proceed.
    query-refiner, because grill-me needs the RAW framing). Ask exactly once:
    ```
    Before I start this initiative: want to grill it first? (~2 min)
-   /pm-grill runs a short interrogation — it widens the brief and surfaces
-   the unknowns you can't see, BEFORE the loop builds on them. [grill / skip]
+   /grill-me runs a short interrogation — it widens the brief and surfaces
+   the unknowns you can't see, BEFORE the loop builds on them. [grill me / skip]
    ```
-   - **grill** → run the `/pm-grill` procedure inline on the raw `$ARGUMENTS`.
+   - **grill me** → run the `/grill-me` procedure inline on the raw `$ARGUMENTS`.
      When it completes, use the **sharpened problem statement** from the
      situation brief as the initiative input and SKIP step 0 below (the grill
      already did the refinement job, conversationally). Any P0 blocker it

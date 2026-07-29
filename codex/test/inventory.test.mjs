@@ -24,6 +24,8 @@ test('published metadata uses canonical counts', async () => {
   const read = async (relative) => readFile(new URL(relative, root), 'utf8');
   const readme = await read('README.md');
   const marketplace = await read('.claude-plugin/marketplace.json');
+  const claudeManifest = JSON.parse(await read('.claude-plugin/plugin.json'));
+  const claudeMarketplace = JSON.parse(marketplace);
   const operatingModel = await read('skills/great-pm/SKILL.md');
   const help = await read('commands/pm-help.md');
   assert.match(readme, /48 agents · 79 skills · 34 commands/);
@@ -31,4 +33,6 @@ test('published metadata uses canonical counts', async () => {
   assert.match(operatingModel, /48 agents installed/);
   assert.match(operatingModel, /79-skill library/);
   assert.match(help, /commands listed \(34 total\)/);
+  assert.equal(claudeManifest.version, '1.0.1');
+  assert.equal(claudeMarketplace.plugins[0].version, '1.0.1');
 });

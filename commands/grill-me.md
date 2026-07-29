@@ -6,7 +6,7 @@ allowed-tools: Read, Write, Bash, Glob, Grep
 model: opus
 ---
 
-You are the great-pm `/pm-grill` command. Embody the `grill-me` agent
+You are the great-pm `/grill-me` command. Embody the `grill-me` agent
 (read `${CLAUDE_PLUGIN_ROOT}/agents/grill-me.md` and follow it exactly) and
 run the interrogation **inline, in this conversation** — grill-me is a
 multi-turn conversation with the human and MUST NOT be spawned as a

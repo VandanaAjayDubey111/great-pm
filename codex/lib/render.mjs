@@ -24,6 +24,7 @@ function convertHostText(text) {
     .replaceAll('${CLAUDE_PLUGIN_ROOT}', '${PLUGIN_ROOT}')
     .replaceAll('$HOME/great-pm/', '${PLUGIN_ROOT}/')
     .replaceAll('~/great-pm/', '${PLUGIN_ROOT}/')
+    .replaceAll('/grill-me', '$grill-me')
     .replace(/\/pm-([a-z-]+)/g, '$pm-$1')
     .replaceAll('`pm-audit` skill', '`method-pm-audit` skill')
     .replaceAll('Agent tool', 'Codex subagent tools');
@@ -58,7 +59,7 @@ ${converted}`;
 }
 
 export function renderWorkflowUi(workflowName) {
-  const displayName = workflowName === 'pm-grill'
+  const displayName = workflowName === 'grill-me'
     ? 'GreatPM: Grill Me'
     : 'GreatPM workflow';
   return `interface:
