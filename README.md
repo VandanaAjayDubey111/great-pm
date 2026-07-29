@@ -12,7 +12,8 @@ its work straight into the tools you already live in: **Notion, Slack, Linear,
 Jira**, two-way, bring-your-own-token, **$0 to operate** (see
 [**Connect your tools**](#connect-your-tools)).
 
-**Status:** v1.1.0 — native plugin packages for Claude Code and Codex. 48 agents · 79 skills · 34 commands/workflows · the 6-stage loop · a native project board.
+**Status:** Claude Code v1.0.0 is shipped. Codex v1.1.0 is a release
+candidate pending final desktop sign-off. **48 agents · 79 skills · 34 commands/workflows** · the 6-stage loop · a native project board.
 Install from this repo (see **Install** below).
 
 ![great-pm project board](docs/screenshots/board.png)
@@ -201,11 +202,12 @@ otherwise it proposes. Every autonomous swap is logged and reversible.
 
 ## Status
 
-**v1.1.0 — shipped for Claude Code and Codex.** 48 agents (6-stage loop + critical quartet + AI-PM pack +
-archetype/domain reviewers), 79 skills, the 6-stage loop with 3 human gates, the
-self-correcting loops (learning · feedback · brain-freshness), and the
-Open-Decision Register that stops questions from getting lost. Installable as a
-native plugin from this repo.
+**Claude Code v1.0.0 is shipped; Codex v1.1.0 is a release candidate pending
+final desktop sign-off.** The package contains 48 agents (6-stage loop +
+critical quartet + AI-PM pack + archetype/domain reviewers), 79 skills, the
+6-stage loop with 3 human gates, the self-correcting loops (learning · feedback
+· brain-freshness), and the Open-Decision Register that stops questions from
+getting lost. Installable as a native plugin from this repo.
 
 ## License
 

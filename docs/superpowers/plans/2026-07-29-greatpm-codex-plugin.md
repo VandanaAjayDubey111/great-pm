@@ -559,7 +559,7 @@ Run:
 cd codex
 npm run build
 npm test -- --test-name-pattern="manifest exposes"
-python3 /Users/vandandubey/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py ../plugins/great-pm
+python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/plugin-creator/scripts/validate_plugin.py" ../plugins/great-pm
 ```
 
 Expected: build exits 0, manifest test passes, validator prints `Plugin validation passed`.
@@ -1663,7 +1663,7 @@ cd ..
 node --test adapters/test/*.test.mjs
 node --test connectors/test/*.test.mjs
 bash scripts/great-pm-skill-doctor.sh
-python3 /Users/vandandubey/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py plugins/great-pm
+python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/plugin-creator/scripts/validate_plugin.py" plugins/great-pm
 git diff --check
 ```
 
