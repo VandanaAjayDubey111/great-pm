@@ -1,0 +1,43 @@
+import { splitFrontmatter, scalar } from './frontmatter.mjs';
+
+export const HOST_BINDING = `## Codex host binding
+
+- Treat references to Claude slash workflows as the equivalently named Codex skill.
+- Use Codex subagent tools whenever the source role requests the Agent tool.
+- Resolve bundled paths from the installed GreatPM plugin root.
+- Ignore Claude-only model aliases, colors, turn limits, and tool allowlists.
+- Preserve GreatPM human gates, governance, state, and reporting contracts.
+`;
+
+const yamlString = (value) => JSON.stringify(value);
+
+export function renderProductSkill(text, source) {
+  const { yaml, body } = splitFrontmatter(text, source);
+  const name = scalar(yaml, 'name', source);
+  const description = scalar(yaml, 'description', source);
+  const packagedName = name === 'pm-audit' ? 'method-pm-audit' : name;
+  return `---
+name: ${packagedName}
+description: ${yamlString(description)}
+---
+
+${HOST_BINDING}
+${body}`;
+}
+
+export function renderWorkflowSkill(text, workflowName, source) {
+  const { yaml, body } = splitFrontmatter(text, source);
+  const description = scalar(yaml, 'description', source);
+  const converted = body
+    .replaceAll('${CLAUDE_PLUGIN_ROOT}', '${PLUGIN_ROOT}')
+    .replace(/\/pm-([a-z-]+)/g, '$pm-$1')
+    .replaceAll('`pm-audit` skill', '`method-pm-audit` skill')
+    .replaceAll('Agent tool', 'Codex subagent tools');
+  return `---
+name: ${workflowName}
+description: ${yamlString(description)}
+---
+
+${HOST_BINDING}
+${converted}`;
+}
