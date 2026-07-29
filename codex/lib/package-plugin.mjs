@@ -108,6 +108,46 @@ async function writeParity(output, counts) {
   );
 }
 
+async function writeManifest(output) {
+  const manifest = {
+    name: 'great-pm',
+    version: '1.1.0',
+    description: 'The complete GreatPM product-management operating system for Codex.',
+    author: {
+      name: 'Vandana Dubey',
+      url: 'https://github.com/VandanaAjayDubey111'
+    },
+    homepage: 'https://github.com/VandanaAjayDubey111/great-pm',
+    repository: 'https://github.com/VandanaAjayDubey111/great-pm',
+    license: 'MIT',
+    keywords: ['product-management', 'ai-pm', 'multi-agent', 'codex'],
+    skills: './skills/',
+    interface: {
+      displayName: 'GreatPM',
+      shortDescription: 'Your complete product team in Codex',
+      longDescription: 'Run discovery, strategy, prioritization, specification, launch, and measurement with specialist agents and human decision gates.',
+      developerName: 'Vandana Dubey',
+      category: 'Productivity',
+      capabilities: ['Interactive', 'Read', 'Write', 'Subagents', 'Hooks'],
+      websiteURL: 'https://github.com/VandanaAjayDubey111/great-pm',
+      privacyPolicyURL: 'https://github.com/VandanaAjayDubey111/great-pm/blob/main/PRIVACY.md',
+      defaultPrompt: [
+        'Start a GreatPM product initiative.',
+        'Show my pending product decisions.',
+        'Resume my GreatPM product loop.'
+      ],
+      brandColor: '#10A37F'
+    }
+  };
+  const directory = path.join(output, '.codex-plugin');
+  await mkdir(directory, { recursive: true });
+  await writeFile(
+    path.join(directory, 'plugin.json'),
+    `${JSON.stringify(manifest, null, 2)}\n`,
+    'utf8'
+  );
+}
+
 export async function packagePlugin({ sourceRoot, outputRoot }) {
   const source = sourceRoot instanceof URL
     ? fileURLToPath(sourceRoot)
@@ -125,6 +165,7 @@ export async function packagePlugin({ sourceRoot, outputRoot }) {
   await copyPortableRuntime(source, output);
   await renderSkills(source, output, counts);
   await writeParity(output, counts);
+  await writeManifest(output);
 
   return {
     counts: {
