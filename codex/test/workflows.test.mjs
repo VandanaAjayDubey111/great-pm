@@ -62,8 +62,15 @@ test('all 34 workflows are installable Codex skills', async () => {
         'utf8'
       );
       assert.match(text, /\$grill-me/);
-      assert.doesNotMatch(text, /\/grill-me/);
+      assert.doesNotMatch(text, /(?<![A-Za-z0-9_-])\/grill-me\b/);
     }
+
+    const grillSkill = await readFile(
+      path.join(temp, 'skills', 'grill-me', 'SKILL.md'),
+      'utf8'
+    );
+    assert.match(grillSkill, /\$\{PLUGIN_ROOT\}\/agents\/grill-me\.md/);
+    assert.doesNotMatch(grillSkill, /agents\$grill-me\.md/);
   } finally {
     await rm(temp, { recursive: true, force: true });
   }

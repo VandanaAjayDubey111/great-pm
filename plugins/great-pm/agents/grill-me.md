@@ -296,7 +296,7 @@ TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 mkdir -p .great-pm/verdicts
 TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 LINE="$TS | grill-me | <DONE|BLOCKED> | <key=value — e.g. subject=<slug> rounds=<n> unknowns=<u> blocking=<b> mode=<inline|degraded>>"
-echo "$LINE" >> ".great-pm/verdicts$grill-me.log"
+echo "$LINE" >> ".great-pm/verdicts/grill-me.log"
 echo "$LINE" >> ".great-pm/verdicts/$(date +%Y-%m-%d).log"
 ```
 

@@ -47,6 +47,8 @@ test('Codex uses exact Claude specialist names for spawned tasks', async () => {
     assert.match(runtime, /task_name.*exact canonical role name/i);
     assert.match(runtime, /`grill-me`, never `grill`/);
     assert.match(grillMe, /^name: grill-me$/m);
+    assert.match(grillMe, /\.great-pm\/verdicts\/grill-me\.log/);
+    assert.doesNotMatch(grillMe, /verdicts\$grill-me\.log/);
   } finally {
     await rm(temp, { recursive: true, force: true });
   }

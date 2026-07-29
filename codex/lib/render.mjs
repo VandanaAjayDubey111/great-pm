@@ -24,7 +24,7 @@ function convertHostText(text) {
     .replaceAll('${CLAUDE_PLUGIN_ROOT}', '${PLUGIN_ROOT}')
     .replaceAll('$HOME/great-pm/', '${PLUGIN_ROOT}/')
     .replaceAll('~/great-pm/', '${PLUGIN_ROOT}/')
-    .replaceAll('/grill-me', '$grill-me')
+    .replace(/(?<![A-Za-z0-9_-])\/grill-me\b/g, '$grill-me')
     .replace(/\/pm-([a-z-]+)/g, '$pm-$1')
     .replaceAll('`pm-audit` skill', '`method-pm-audit` skill')
     .replaceAll('Agent tool', 'Codex subagent tools');
