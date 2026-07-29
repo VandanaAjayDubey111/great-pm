@@ -37,7 +37,7 @@ If `NO_PROJECT` and scope is `product` or an initiative → BLOCKED. Tell the
 user:
 ```
 No .great-pm/PROJECT.md found in $(pwd).
-Copy the template:  cp ~/great-pm/templates/PROJECT.md.template .great-pm/PROJECT.md
+Copy the template:  cp ${PLUGIN_ROOT}/templates/PROJECT.md.template .great-pm/PROJECT.md
 Customize, then re-run $pm-audit.
 ```
 

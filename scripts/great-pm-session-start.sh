@@ -5,7 +5,7 @@
 # Hooks cannot run agents; this is how the learning/feedback loops become
 # "automatic on next session" — the hook flags, the agent executes.
 set -u
-PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-$HOME/great-pm}"
+PLUGIN_ROOT="${PLUGIN_ROOT:-${CLAUDE_PLUGIN_ROOT:-$HOME/great-pm}}"
 
 # --- ensure the `great-pm` CLI is on PATH (idempotent, silent) so agents can call
 #     `great-pm connect ...`. No-op if already resolvable or already linked. ---

@@ -111,7 +111,7 @@ CONCEPTS
                           skill-scout may swap a skill autonomously when isolated and
                           non-critical (logged to .great-pm/skill-swaps.log).
 
-For more, see ~/great-pm/README.md.
+For more, see ${PLUGIN_ROOT}/README.md.
 ```
 
 If `--brief` was passed, print only the command names (one per line, no

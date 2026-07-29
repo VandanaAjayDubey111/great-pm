@@ -25,7 +25,7 @@ ls .great-pm/PROJECT.md 2>/dev/null && echo "PROJECT_OK" || echo "NO_PROJECT"
 If `NO_PROJECT` → stop. Tell the user:
 ```
 No .great-pm/PROJECT.md found in $(pwd).
-Copy the template:  cp ~/great-pm/templates/PROJECT.md.template .great-pm/PROJECT.md
+Copy the template:  cp ${PLUGIN_ROOT}/templates/PROJECT.md.template .great-pm/PROJECT.md
 Then customize it, then re-run $pm-start.
 ```
 

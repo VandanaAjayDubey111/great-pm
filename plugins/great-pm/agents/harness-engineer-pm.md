@@ -92,11 +92,11 @@ nags), and promote decisions from chat into the repo.
 
 ## Inputs
 
-- `~/great-pm/agents/*.md` (all 41 agents after Phase C).
-- `~/great-pm/commands/*.md` (all 32 commands).
-- `~/great-pm/skills/*/SKILL.md`.
-- `~/great-pm/templates/*.md`.
-- `~/great-pm/.claude-plugin/plugin.json`.
+- `${PLUGIN_ROOT}/agents/*.md` (all 41 agents after Phase C).
+- `${PLUGIN_ROOT}/commands/*.md` (all 32 commands).
+- `${PLUGIN_ROOT}/skills/*/SKILL.md`.
+- `${PLUGIN_ROOT}/templates/*.md`.
+- `${PLUGIN_ROOT}/.claude-plugin/plugin.json`.
 - `.great-pm/verdicts/*.log` (per-agent + per-date).
 - `.great-pm/brain.md` and `.great-pm/lessons.md`.
 

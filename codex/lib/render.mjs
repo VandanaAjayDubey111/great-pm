@@ -30,6 +30,7 @@ export function renderWorkflowSkill(text, workflowName, source) {
   const description = scalar(yaml, 'description', source);
   const converted = body
     .replaceAll('${CLAUDE_PLUGIN_ROOT}', '${PLUGIN_ROOT}')
+    .replaceAll('~/great-pm/', '${PLUGIN_ROOT}/')
     .replace(/\/pm-([a-z-]+)/g, '$pm-$1')
     .replaceAll('`pm-audit` skill', '`method-pm-audit` skill')
     .replaceAll('Agent tool', 'Codex subagent tools');
@@ -58,6 +59,7 @@ export function renderAgent(text, source) {
   const description = scalar(yaml, 'description', source);
   const converted = body
     .replaceAll('${CLAUDE_PLUGIN_ROOT}', '${PLUGIN_ROOT}')
+    .replaceAll('~/great-pm/', '${PLUGIN_ROOT}/')
     .replace(/\/pm-([a-z-]+)/g, '$pm-$1')
     .replaceAll('`pm-audit` skill', '`method-pm-audit` skill')
     .replaceAll('Agent tool', 'Codex subagent tools');

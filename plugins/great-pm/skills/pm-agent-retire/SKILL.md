@@ -97,7 +97,7 @@ Wait for user `yes` / `no`. If `no` → ABORT.
 
 5. List downstream sweep targets (commands/skills/docs that mention the agent):
    ```bash
-   grep -r "<agent-name>" ~/great-pm/commands/ ~/great-pm/skills/ ~/great-pm/agents/ 2>/dev/null
+   grep -r "<agent-name>" ${PLUGIN_ROOT}/commands/ ${PLUGIN_ROOT}/skills/ ${PLUGIN_ROOT}/agents/ 2>/dev/null
    ```
 
 ## Reporting

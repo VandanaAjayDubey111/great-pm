@@ -1,0 +1,35 @@
+name: GreatPM Codex Plugin
+
+on:
+  pull_request:
+  push:
+    branches: [main, "codex/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build package
+        working-directory: codex
+        run: npm run build
+      - name: Confirm generated files were committed
+        run: git diff --exit-code -- plugins/great-pm docs/CODEX-PARITY.md
+      - name: Test package and parity
+        working-directory: codex
+        run: npm test
+      - name: Check generated package
+        working-directory: codex
+        run: npm run check:generated
+      - name: Test shared adapters
+        run: node --test adapters/test/*.test.mjs
+      - name: Test shared connectors
+        run: node --test connectors/test/*.test.mjs
+      - name: Run GreatPM skill doctor
+        run: bash scripts/great-pm-skill-doctor.sh

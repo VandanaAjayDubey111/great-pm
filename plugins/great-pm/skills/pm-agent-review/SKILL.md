@@ -25,7 +25,7 @@ agent's recent behavior.
 
 ```bash
 AGENT="${1:?usage: $pm-agent-review <agent-name> [--window=<N>days]}"
-ls ~/great-pm/agents/${AGENT}.md 2>/dev/null && echo "AGENT_OK" || echo "NO_AGENT"
+ls ${PLUGIN_ROOT}/agents/${AGENT}.md 2>/dev/null && echo "AGENT_OK" || echo "NO_AGENT"
 ls .great-pm/verdicts/ 2>/dev/null && echo "VERDICTS_OK" || echo "NO_VERDICTS"
 ```
 
