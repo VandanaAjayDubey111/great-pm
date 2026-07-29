@@ -12,13 +12,13 @@ import path from 'node:path';
 import { inventory } from './inventory.mjs';
 import {
   renderProductSkill,
+  renderAgent,
   renderWorkflowSkill,
   renderWorkflowUi
 } from './render.mjs';
 import { splitFrontmatter, scalar } from './frontmatter.mjs';
 
 const PORTABLE_DIRECTORIES = [
-  'agents',
   'adapters',
   'board',
   'connectors',
@@ -102,6 +102,25 @@ async function renderSkills(source, output, counts) {
   await mkdir(path.join(output, 'skills'), { recursive: true });
   await renderProductSkills(source, output);
   await renderWorkflowSkills(source, output, counts.workflows);
+  await cp(
+    path.join(source, 'codex', 'source-skills', 'great-pm-runtime'),
+    path.join(output, 'skills', 'great-pm-runtime'),
+    { recursive: true }
+  );
+}
+
+async function renderAgents(source, output, agentNames) {
+  const outputDirectory = path.join(output, 'agents');
+  await mkdir(outputDirectory, { recursive: true });
+  for (const agentName of agentNames) {
+    const sourceFile = path.join(source, 'agents', `${agentName}.md`);
+    const text = await readFile(sourceFile, 'utf8');
+    await writeFile(
+      path.join(outputDirectory, `${agentName}.md`),
+      renderAgent(text, sourceFile),
+      'utf8'
+    );
+  }
 }
 
 async function writeParity(output, counts) {
@@ -175,6 +194,7 @@ export async function packagePlugin({ sourceRoot, outputRoot }) {
   await mkdir(output, { recursive: true });
   await copyPortableRuntime(source, output);
   await renderSkills(source, output, counts);
+  await renderAgents(source, output, counts.agents);
   await writeParity(output, counts);
   await writeManifest(output);
 

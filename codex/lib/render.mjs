@@ -51,3 +51,28 @@ policy:
   allow_implicit_invocation: true
 `;
 }
+
+export function renderAgent(text, source) {
+  const { yaml, body } = splitFrontmatter(text, source);
+  const name = scalar(yaml, 'name', source);
+  const description = scalar(yaml, 'description', source);
+  const converted = body
+    .replaceAll('${CLAUDE_PLUGIN_ROOT}', '${PLUGIN_ROOT}')
+    .replace(/\/pm-([a-z-]+)/g, '$pm-$1')
+    .replaceAll('`pm-audit` skill', '`method-pm-audit` skill')
+    .replaceAll('Agent tool', 'Codex subagent tools');
+  return `---
+name: ${name}
+description: ${JSON.stringify(description)}
+---
+
+## Codex role binding
+
+- Run this role as a Codex subagent with a bounded, self-contained assignment.
+- Inherit the parent session permissions; request no broader authority.
+- Use the product skills named in the canonical role when they are packaged.
+- Preserve DONE/BLOCKED reporting, artefact paths, and human gates.
+- Return a concise verdict to the parent GreatPM workflow.
+
+${converted}`;
+}
