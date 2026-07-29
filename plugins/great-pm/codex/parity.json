@@ -49,6 +49,11 @@
     "tradeoff-arbiter",
     "user-researcher"
   ],
+  "gates": [
+    "gate:launch",
+    "gate:spec",
+    "gate:strategy"
+  ],
   "productSkills": [
     "accessibility",
     "activation-aha-moment",
@@ -129,6 +134,14 @@
     "user-research",
     "value-proposition-canvas",
     "working-backwards"
+  ],
+  "stages": [
+    "discover",
+    "strategize",
+    "prioritize",
+    "define",
+    "launch",
+    "measure"
   ],
   "templates": [
     "AI-FEEDBACK-LOOP-template.md",

@@ -152,7 +152,16 @@ async function writeParity(output, counts) {
   await mkdir(path.join(output, 'codex'), { recursive: true });
   const parity = {
     agents: [...counts.agents].sort(),
+    gates: ['gate:launch', 'gate:spec', 'gate:strategy'],
     productSkills: [...counts.skills].sort(),
+    stages: [
+      'discover',
+      'strategize',
+      'prioritize',
+      'define',
+      'launch',
+      'measure'
+    ],
     templates: [...counts.templates].sort(),
     workflows: [...counts.workflows].sort()
   };
