@@ -10,7 +10,11 @@ import {
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { inventory } from './inventory.mjs';
-import { renderProductSkill, renderWorkflowSkill } from './render.mjs';
+import {
+  renderProductSkill,
+  renderWorkflowSkill,
+  renderWorkflowUi
+} from './render.mjs';
 import { splitFrontmatter, scalar } from './frontmatter.mjs';
 
 const PORTABLE_DIRECTORIES = [
@@ -82,6 +86,13 @@ async function renderWorkflowSkills(source, output, workflowNames) {
     await writeFile(
       path.join(outputDirectory, 'SKILL.md'),
       renderWorkflowSkill(text, workflowName, sourceFile),
+      'utf8'
+    );
+    const uiDirectory = path.join(outputDirectory, 'agents');
+    await mkdir(uiDirectory, { recursive: true });
+    await writeFile(
+      path.join(uiDirectory, 'openai.yaml'),
+      renderWorkflowUi(workflowName),
       'utf8'
     );
   }

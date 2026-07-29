@@ -41,3 +41,13 @@ description: ${yamlString(description)}
 ${HOST_BINDING}
 ${converted}`;
 }
+
+export function renderWorkflowUi(workflowName) {
+  return `interface:
+  display_name: "GreatPM workflow"
+  short_description: "Run a GreatPM product-management workflow"
+  default_prompt: "Use $${workflowName} on my current product initiative."
+policy:
+  allow_implicit_invocation: true
+`;
+}
