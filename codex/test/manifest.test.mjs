@@ -16,7 +16,7 @@ test('manifest exposes GreatPM as a Codex plugin', async () => {
       await readFile(path.join(temp, '.codex-plugin/plugin.json'), 'utf8')
     );
     assert.equal(manifest.name, 'great-pm');
-    assert.equal(manifest.version, '1.1.3');
+    assert.equal(manifest.version, '1.1.5');
     assert.equal(manifest.skills, './skills/');
     assert.equal(manifest.interface.displayName, 'GreatPM');
     assert.deepEqual(manifest.interface.capabilities, [

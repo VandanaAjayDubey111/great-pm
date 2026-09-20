@@ -5,6 +5,8 @@ description: "Eval-set designer. Authors the golden-truth + edge-case + adversar
 
 ## Codex role binding
 
+- Internal task identifier: `model_evaluator_pm`. Canonical role: `model-evaluator-pm`; keep this canonical name in filenames, verdict logs, and user-facing output.
+- Before delegating further, read the `great-pm-runtime` skill and use its internal identifier mapping.
 - Run this role as a Codex subagent with a bounded, self-contained assignment.
 - Inherit the parent session permissions; request no broader authority.
 - Use the product skills named in the canonical role when they are packaged.

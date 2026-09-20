@@ -93,7 +93,9 @@ async function renderProductSkills(source, output) {
       ? 'method-pm-audit'
       : canonicalName;
     const outputDirectory = path.join(output, 'skills', packagedName);
-    await mkdir(outputDirectory, { recursive: true });
+    // Preserve references, scripts and assets before replacing the entry point
+    // with its Codex-specific rendering. Copying only SKILL.md breaks links.
+    await cp(path.join(sourceSkills, entry.name), outputDirectory, { recursive: true });
     await writeFile(
       path.join(outputDirectory, 'SKILL.md'),
       renderProductSkill(text, sourceFile),
@@ -175,7 +177,7 @@ async function writeParity(output, counts) {
 async function writeManifest(output) {
   const manifest = {
     name: 'great-pm',
-    version: '1.1.3',
+    version: '1.1.5',
     description: 'The complete GreatPM product-management operating system for Codex.',
     author: {
       name: 'Vandana Dubey',
