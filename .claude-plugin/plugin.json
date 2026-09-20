@@ -1,7 +1,7 @@
 {
   "name": "great-pm",
   "description": "A full product team for a solo PM or founder. Specialist agents run the product loop — discovery, strategy, prioritization, specs, launch, measurement — while the human confirms a small number of gates.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": { "name": "Vandana Dubey", "url": "https://github.com/VandanaAjayDubey111" },
   "license": "MIT",
   "keywords": ["product-management", "ai-pm", "multi-agent", "orchestration", "claude-code-plugin"],

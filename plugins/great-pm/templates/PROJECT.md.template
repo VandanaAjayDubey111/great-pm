@@ -1,0 +1,70 @@
+# great-pm Project
+
+> Copy this file to `.great-pm/PROJECT.md` in your project root and customize.
+> Every great-pm agent reads this file at the start of its work.
+
+## Project
+
+product: <your product name>
+archetype: <b2b-saas | consumer-app | marketplace | dev-tool | platform | mobile-app | ecommerce>
+ai_pm_pack: <true | false>   # true activates the AI-PM overlay pack for AI products
+project_size: <small | medium | large>
+
+## Phase
+
+phase: <discovery | building | launched | scaling>
+loop_stage: <discover | strategize | prioritize | define | launch | measure>
+
+## Team
+
+team-size: 1
+mode: <solo | small-team | growing>
+approval-level: <verbose | expert | gates-only | auto>
+
+## Gate policy
+
+> Controls whether agents may auto-close gates or whether a human must
+> run /pm-gate approve <id> explicitly. great-pm's default is `explicit`
+> (more conservative than engineering's `auto`) because PM gates have
+> larger blast radius than engineering ones.
+
+gate-policy: explicit  # explicit | auto
+
+## Goals
+
+- <primary product goal — what would success look like in 6 months?>
+- <secondary goal>
+- <stretch / north-star aspiration>
+
+## Active initiatives (running in parallel)
+
+> great-pm supports multiple initiatives at once. List each with its current
+> loop stage. Unrelated work never blocks unrelated work; only same-initiative
+> dependencies gate.
+
+- <initiative-slug-1>: stage=<discover|strategize|...>, lead-agent=<name>
+- <initiative-slug-2>: stage=<...>, lead-agent=<...>
+
+## Context
+
+<Anything project-specific the agents should know: market position, hard
+constraints, regulatory scope, team strengths, technical posture, things
+that have already been tried. The richer this section, the better the
+agent output.>
+
+## Compliance & risk (if applicable)
+
+compliance: []  # e.g. [gdpr, hipaa, pci-dss-saq-a]
+risk: <low | medium | high>
+
+## Memory & query rule
+
+> Before reading source files, agents query memory layers in this order:
+> 1. `.great-pm/lessons.md` — project-specific lessons learned
+> 2. `~/.great-pm/decisions.md` — global cross-project decisions
+> 3. `.great-pm/verdicts/` — past agent verdicts (DONE / BLOCKED with rationale)
+> 4. Only then read source files / current state for the actual work
+
+## Notes
+
+> This file is yours. Edit freely. Agents read it; they do not overwrite it.

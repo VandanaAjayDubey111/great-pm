@@ -1,0 +1,6 @@
+interface:
+  display_name: "GreatPM workflow"
+  short_description: "Run a GreatPM product-management workflow"
+  default_prompt: "Use $pm-promote on my current product initiative."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+// scripts/great-pm-connect
+import { run } from '../connectors/cli.mjs';
+
+run(process.argv.slice(2))
+  .then((out) => process.stdout.write(JSON.stringify(out) + '\n'))
+  .catch((err) => {
+    process.stderr.write(JSON.stringify({ status: 'error', error: err.message }) + '\n');
+    process.exit(1);
+  });
