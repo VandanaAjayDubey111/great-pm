@@ -18,7 +18,7 @@
 | Second PR initial base | `codex/greatpm-codex-plugin` (stacked on the first PR) |
 | Second PR title | Add the public GreatPM MCP with verified Codex compatibility |
 | Second PR description | [MCP-PR.md](MCP-PR.md) |
-| Codex plugin candidate | `1.1.5` |
+| Codex plugin candidate | `1.1.6` |
 | Claude plugin candidate | `1.0.1` |
 | MCP candidate / future tag | `1.0.0` / `mcp-v1.0.0` |
 | MCP URL | https://greatpm-mcp.vandana424-s.workers.dev/mcp |
@@ -48,6 +48,9 @@ Prefer a normal merge commit for the first PR so stacked history is preserved.
 - Subsequent 1.1.5 candidate fixes internal specialist spawn identifiers and
   includes supporting skill files such as `skills/great-pm/WORKFLOW.md`.
   Public workflow and specialist names, including `$grill-me`, are unchanged.
+- The 1.1.6 candidate also bundles the referenced `docs/HARNESS-LOOPS.md` via
+  an explicit allowlist and corrects hook-trust documentation. CLI inspection
+  found five GreatPM hooks installed but zero active, awaiting human review.
 - Added a regression test that reproduces the path/URL corruption before the
   fix and passes after it.
 - Kept deployment manual and restricted to `main`; added serialized jobs and
@@ -60,9 +63,9 @@ Prefer a normal merge commit for the first PR so stacked history is preserved.
 
 ## Verification
 
-- 21 Codex tests, 47 MCP tests, 112 shared tests: **180 passing** on the
-  integrated 1.1.5 candidate.
-- Codex generated package: current, 316 files.
+- 22 Codex tests, 47 MCP tests, 112 shared tests: **181 passing** on the
+  integrated 1.1.6 candidate.
+- Codex generated package: current, 317 files.
 - MCP catalog freshness, TypeScript and Worker dry-run bundle: pass.
 - MCP Registry's official validator: `server.json is valid`; no publication.
 - Workflow YAML, embedded shell blocks and review JSON: parse successfully.
@@ -139,7 +142,7 @@ The owner reviewed both PRs and approved the unchanged release route before
 subsequently pausing hosting. Branch pushes and the scoped bug fixes are
 authorized; no force push or bypass of release checks is needed.
 
-1. Synchronize the reviewed 1.1.5 fixes to both branches and verify fresh CI.
+1. Synchronize the reviewed 1.1.6 fixes to both branches and verify fresh CI.
 2. Finish native-plugin live/desktop sign-off; merge PR #2 first only after
    those prerequisites pass.
 3. When hosting is resumed, apply reviewed GitHub settings and securely supply

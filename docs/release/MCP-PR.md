@@ -13,7 +13,7 @@ version/checksum-pinned MCP publisher. Environment settings and the exact
 setup sequence are prepared under `.github/release/` and `docs/release/REVIEW.md`.
 These files do not automatically apply GitHub account settings or store secrets.
 
-Validation: all 180 tests pass (21 Codex, 47 MCP, 112 shared), both generated
+Validation: all 181 tests pass (22 Codex, 47 MCP, 112 shared), both generated
 outputs are current, TypeScript and the Worker dry-run build pass. Live MCP
 tools/resources/prompts pass, Codex CLI 0.153.4 called all three tools, and the
 official Registry accepted `server.json` validation without publication.
@@ -24,8 +24,9 @@ add the deployment secrets, confirm the deployed revision, and complete the
 remaining desktop/second-client and operations checks. No production deploy,
 Registry publish, or release tag is part of opening this draft PR.
 
-The integrated plugin candidate is now 1.1.5, including corrected internal
-specialist identifiers and supporting skill files. Cloudflare login and
+The integrated plugin candidate is now 1.1.6, including corrected internal
+specialist identifiers, supporting skill files and the referenced harness
+guide, plus accurate hook-trust documentation. Cloudflare login and
 hosted release are paused at the owner's request after callback failures.
 This PR preserves the work; it does not represent a new production deployment
 or completed native-plugin live sign-off.
