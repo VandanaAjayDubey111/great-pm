@@ -32,6 +32,9 @@ const PORTABLE_FILES = [
   'SECURITY.md'
 ];
 
+// Explicit runtime reference allowlist; never bundle release/research documents.
+const PORTABLE_DOCS = ['HARNESS-LOOPS.md'];
+
 const PORTABLE_SCRIPTS = [
   'great-pm',
   'great-pm-connect',
@@ -52,6 +55,11 @@ async function copyPortableRuntime(source, output) {
 
   for (const file of PORTABLE_FILES) {
     await copyFile(path.join(source, file), path.join(output, file));
+  }
+
+  await mkdir(path.join(output, 'docs'), { recursive: true });
+  for (const file of PORTABLE_DOCS) {
+    await copyFile(path.join(source, 'docs', file), path.join(output, 'docs', file));
   }
 
   await cp(
@@ -177,7 +185,7 @@ async function writeParity(output, counts) {
 async function writeManifest(output) {
   const manifest = {
     name: 'great-pm',
-    version: '1.1.5',
+    version: '1.1.6',
     description: 'The complete GreatPM product-management operating system for Codex.',
     author: {
       name: 'Vandana Dubey',

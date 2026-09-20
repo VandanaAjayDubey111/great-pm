@@ -57,9 +57,16 @@ GreatPM packages these local hooks:
   writes.
 
 Review `plugins/great-pm/hooks/hooks.json` and the referenced scripts before
-trusting them. Hooks operate only with the permissions available to the Codex
-session. The safety hook is a guardrail, not a replacement for backups, access
-controls, or human review.
+trusting them. Trusted command hooks can run outside the Codex sandbox with
+your local account's permissions. GreatPM's startup hook may also create a
+`~/.local/bin/great-pm` shortcut if none exists. The safety hook is a guardrail,
+not a replacement for backups, access controls, or human review.
+
+Use `/hooks` in an interactive Codex CLI session to inspect the source and
+command for each hook. Trust only the GreatPM definitions you have reviewed;
+do not use a hook-trust bypass. Installation alone does not activate these
+hooks. New or changed definitions need review again. See the
+[official hook trust documentation](https://learn.chatgpt.com/docs/hooks#review-and-trust-hooks).
 
 ## Initialize a product workspace
 
@@ -108,8 +115,9 @@ letters, digits, and underscores, so `query-refiner-pm` runs as `query_refiner_p
 and `pm-lead` as `pm_lead`. This mapping is internal only: continue to use
 `$grill-me`, not `$grill_me`. The runtime records the canonical role alongside
 the internal identifier and returned agent ID. Version 1.1.4 introduced this
-mapping; the 1.1.5 candidate also includes the supporting workflow guide that
-earlier packages omitted. Start a new Codex session after installing the update.
+mapping; 1.1.5 includes the supporting workflow guide, and 1.1.6 also bundles
+the referenced feedback-loop guide. Earlier packages omitted these files.
+Start a new Codex session after installing the update.
 
 ## Test a local checkout
 
@@ -163,7 +171,10 @@ doctor require Node.
 ### Hooks are installed but do not run
 
 Open GreatPM in **Plugins**, perform the hook review, and trust the current hook
-definitions. Re-review is expected when hook definitions change.
+definitions. Alternatively, run `codex` in Terminal and use `/hooks` to review
+GreatPM's five hook definitions. If the interface reports zero active hooks,
+automatic context loading and handoff/session saving are not active yet.
+Re-review is expected when hook definitions change.
 
 ### The doctor reports missing `.great-pm/PROJECT.md`
 

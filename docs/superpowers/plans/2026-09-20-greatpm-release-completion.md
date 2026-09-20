@@ -10,6 +10,8 @@
 
 **2026-09-20 update:** Owner requested skipping optional hosting after repeated OAuth callback failures. Pause Cloudflare login, deployment and Registry publication; continue independent plugin verification and GitHub updates. This does not waive native-plugin live checks or authorize a different hosting provider. See `codex/live-check-2026-09-20.md` for observed evidence and remaining gaps.
 
+**Continuous execution:** Owner then requested "do everything . don't wait after every step". Continue all authorized independent work without step approvals. Required security trust and product gates remain intact. Subsequent 1.1.6 correction adds the also-referenced harness guide and corrects hook-permission documentation; 134 Codex/shared tests pass.
+
 ## 1. Preserve supporting skill files
 
 - [x] Add a regression test that builds into a temporary directory and compares packaged `skills/great-pm/WORKFLOW.md` to the canonical file; traverse every canonical skill's non-SKILL.md files recursively. Current inventory has no nested supporting-file fixtures; that extra coverage remains a non-blocking improvement.
@@ -21,15 +23,16 @@
 ## 2. Verify release prerequisites
 
 - [x] Retain the observed 1.1.4 real delegation/resume evidence. Do not mislabel a synthetic discovery stop as successful strategy-gate traversal.
-- [ ] Verify desktop hook review and actual lifecycle operation, without bypassing trust.
+- [ ] Verify desktop hook review and actual lifecycle operation, without bypassing trust. CLI reports five hooks awaiting review and zero active; desktop screen control is prohibited by the host.
 - [ ] Complete strategy-gate traversal with appropriate evidence; do not weaken production validation requirements or falsely label synthetic interviews.
 - [ ] Deferred by owner: check Cloudflare identity, deployment permissions, limits, logs and rollback. Do not restart login until hosting is resumed; never put secrets in chat or git.
 
 ## 3. Update and release
 
-- [x] Commit only reviewed fixes/docs/generated package on the existing plugin branch; preserve unrelated untracked files. Plugin fix: `2cbc56d`.
-- [x] Merge the plugin branch into the stacked release-review branch without force pushes; regenerate integrated assets if needed and rerun all tests. Integrated automated total: 180 passing; generated package current.
-- [ ] Push both branches; verify both GitHub CI results.
+- [x] Commit initial reviewed fixes/docs/generated package on the existing plugin branch; preserve unrelated untracked files. Initial fix commit: `2cbc56d`.
+- [x] Merge initial fixes into the stacked release-review branch without force pushes; rerun all tests. Integrated initial candidate: 180 passing.
+- [x] Push initial fixes on both branches; verify both GitHub CI results. All checks passed at plugin `2cbc56d` and integrated `b861c41`.
+- [ ] Push and verify subsequent 1.1.6 documentation/reference fixes on both branches.
 - [ ] After prerequisites pass, merge plugin PR #2 first. Retarget PR #3 to main and rerun checks before its merge.
 - [ ] Apply prepared GitHub environment review/branch restrictions and securely configure deployment credentials.
 - [ ] Run manual deployment from main, verify exact deployed revision plus live clients, and confirm rollback.
