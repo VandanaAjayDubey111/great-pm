@@ -1,0 +1,32 @@
+{
+  "name": "@great-pm/mcp-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Public read-only GreatPM Model Context Protocol server",
+  "type": "module",
+  "scripts": {
+    "catalog:build": "node scripts/build-catalog.mjs",
+    "catalog:check": "node scripts/check-catalog.mjs",
+    "release:check-tag": "node scripts/check-release-tag.mjs",
+    "smoke:remote": "node scripts/smoke-remote.mjs",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "deploy:dry": "wrangler deploy --dry-run",
+    "deploy": "wrangler deploy"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.0.0",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20260728.1",
+    "@modelcontextprotocol/client": "2.0.0",
+    "@types/node": "24.13.3",
+    "typescript": "7.0.2",
+    "vitest": "4.1.10",
+    "wrangler": "4.114.0"
+  }
+}

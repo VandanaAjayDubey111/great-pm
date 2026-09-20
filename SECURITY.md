@@ -1,35 +1,51 @@
-# GreatPM Security
+# GreatPM security policy
 
 ## Reporting a vulnerability
 
-Please report suspected vulnerabilities through a private GitHub security
-advisory for this repository. Do not disclose credentials, customer data, or an
-unpatched exploit in a public issue.
+Do not open a public issue for a vulnerability, credential exposure, private
+request data, or an exploit affecting users. Report it privately through
+[GitHub Security Advisories](https://github.com/VandanaAjayDubey111/great-pm/security/advisories/new).
 
-Include the affected version, reproduction steps, expected impact, and any
-suggested mitigation. The maintainers will acknowledge the report, investigate
-it, and coordinate disclosure after a fix is available.
+Include the affected version, endpoint or file, reproduction steps, expected
+and observed behavior, potential impact, and a safe proof of concept. Do not
+include real user data, tokens, passwords, or third-party credentials. Allow
+the maintainers time to investigate and coordinate disclosure. Non-sensitive
+hardening suggestions can use normal GitHub issues.
 
-## Security model
+## Local Claude Code and Codex plugins
 
-GreatPM is a local-first Codex plugin. It can read and write files, run approved
-scripts, delegate work to Codex subagents, and use connectors that the user
-explicitly configures. Those capabilities make the following controls
-important:
+The local plugins can read/write files, run approved scripts, delegate work
+to specialists, and use explicitly configured connectors. Review their source
+and hook definitions before trusting them. Grant only the repository and
+connector permissions needed for the work.
 
-- Review the plugin source and hook definitions before trusting them.
-- Grant only the repository and connector permissions needed for the work.
-- Keep API keys and access tokens in the host's secret storage, never in
-  `.great-pm/`, prompts, templates, or committed files.
-- Review proposed destructive shell commands and external writes before
-  approving them.
-- Keep GreatPM, Codex, and connector dependencies updated.
+Keep tokens in the host's secret storage or the connector's gitignored secret
+file, never in product artifacts, prompts, templates, or committed files.
+Review destructive commands and external writes. Keep the host, plugin, and
+dependencies updated. Safety hooks reduce common mistakes but are not a
+sandbox and do not replace backups, access controls, or human review.
 
-GreatPM's safety hooks reduce common command and secret-handling mistakes, but
-they are not a sandbox and do not replace repository backups, access controls,
-or human review.
+## Public MCP security model
 
-## Supported version
+The public v1 MCP server is unauthenticated and read-only. It serves a static,
+allowlisted catalog with no user accounts, persistent storage, secrets,
+outbound API calls, connector access, or mutation tools.
 
-Security fixes are applied to the latest release on the repository's default
-branch.
+Controls include:
+
+- Host and Origin validation and HTTPS production deployment;
+- a 256 KiB request-body limit, including streamed bodies;
+- Zod validation and bounded tool inputs;
+- fixed transport errors without stack traces;
+- no permissive wildcard CORS and restrictive browser security headers;
+- automated protocol/request-guard tests and lockfile-pinned dependencies.
+
+Do not send connector tokens or confidential project data to the public MCP.
+The client host controls whether it invokes a tool; server annotations are
+descriptive and do not replace authorization for other local plugin actions.
+
+## Supported releases
+
+Plugin security fixes target the latest released version on the default
+branch. Remote MCP security fixes target the current Worker deployment;
+older remote versions are not separately operated at the public URL.

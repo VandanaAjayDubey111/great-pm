@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.vandanaajaydubey111/great-pm",
+  "title": "GreatPM",
+  "description": "Read-only product methods, artifact templates, reusable prompts, and a human-governed workflow.",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/VandanaAjayDubey111/great-pm",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://greatpm-mcp.vandana424-s.workers.dev/mcp"
+    }
+  ]
+}

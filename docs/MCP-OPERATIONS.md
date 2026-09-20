@@ -1,0 +1,149 @@
+# GreatPM MCP operations
+
+This runbook covers the public Cloudflare Worker in `mcp/`.
+
+## Local verification
+
+```bash
+cd mcp
+npm ci
+npm run catalog:check
+npm test -- --run
+npm run typecheck
+npm run deploy:dry
+```
+
+Then run the existing repository regression suite from the repository root:
+
+```bash
+node --test connectors/test/*.test.mjs adapters/test/*.test.mjs
+```
+
+## Local server
+
+```bash
+cd mcp
+npx wrangler dev
+```
+
+Wrangler prints a local URL. The MCP endpoint is `/mcp`; `/health` is the
+health check.
+
+## First deployment
+
+The repository owner performs the first deployment interactively:
+
+```bash
+cd mcp
+npx wrangler login
+npx wrangler whoami
+npm run deploy
+```
+
+Use a Cloudflare free account. This Worker has no paid bindings. Record the
+exact `workers.dev` URL from Wrangler, then verify `/health` and connect an
+independent MCP client before publishing installation instructions.
+
+Do not paste Cloudflare passwords, OAuth codes, API tokens, or account
+credentials into issues, pull requests, chat, or repository files.
+
+## Automated deployment
+
+The manual GitHub workflow runs only from `main`, serializes deployments, and
+uses the `production` environment. Configure that environment with the owner
+as a required reviewer before running the workflow. It requires:
+
+- environment secret `CLOUDFLARE_API_TOKEN`, with the least account permissions
+  needed to deploy the Worker;
+- environment secret `CLOUDFLARE_ACCOUNT_ID` for the verified Cloudflare account.
+
+Create the least-privileged API token in Cloudflare after confirming the account.
+The workflow installs the lockfile-pinned dependencies, verifies the server,
+and deploys from `mcp/`.
+
+The exact owner-review settings and setup commands are prepared in
+[the release review](release/REVIEW.md). They are review artifacts, not proof
+that GitHub environments or secrets have been configured.
+
+## Production verification
+
+The latest dated checks and unresolved launch items are recorded in
+[MCP-READINESS.md](MCP-READINESS.md). A successful smoke test establishes API
+compatibility; it does not establish Registry publication or deployment-account
+configuration.
+
+After every deployment:
+
+1. `GET /health` returns HTTP 200 and `{"status":"ok","service":"greatpm-mcp"}`.
+2. An MCP client initializes over `/mcp`.
+3. `tools/list` returns exactly the three GreatPM tools.
+4. `greatpm_list_methods` returns a result.
+5. `resources/read` resolves `greatpm://methods/prd-authoring`.
+6. `prompts/get` resolves `write-prd`.
+7. A request with a disallowed Origin returns HTTP 403.
+8. Cloudflare shows no unexpected bindings or secrets.
+
+For a Codex-specific check, install using [MCP.md](MCP.md), open a fresh task,
+and run its three-tool verification prompt. Confirm actual tool-call results,
+not only an assistant's final claim. A passing SDK test alone is not a Codex
+desktop test. Record the CLI/app version and exact endpoint tested.
+
+## Logs and privacy
+
+Application logging records only error class names. It does not intentionally
+log MCP request bodies or prompt arguments. Cloudflare may retain standard
+platform request metadata under the account's logging and analytics settings.
+
+Use `npx wrangler tail` only during an incident or deployment check. Avoid
+copying live logs into public issues when they contain IP addresses, URLs, or
+other request metadata.
+
+## Rollback
+
+Cloudflare retains Worker versions. For a production regression:
+
+1. stop automated deployments;
+2. use the Cloudflare dashboard or Wrangler version commands to identify the
+   last verified version;
+3. roll back that exact version;
+4. repeat the production verification checklist;
+5. open a private security advisory if confidentiality or integrity was
+   affected.
+
+Do not delete the Worker as a first response. A version rollback preserves the
+stable public URL and is easier for clients to recover from.
+
+## Catalog release
+
+When an allowlisted method or template changes:
+
+```bash
+cd mcp
+npm run catalog:build
+npm run catalog:check
+npm test -- --run
+```
+
+Review the generated diff. Generated content is public server payload, so the
+same licensing, security, and content review applies as for hand-written code.
+
+## Registry release
+
+The official MCP Registry is in preview and published versions are immutable.
+For a Registry update:
+
+1. increment the semantic version in `server.json` and `mcp/package.json`;
+2. verify the public endpoint;
+3. merge the exact metadata;
+4. create the corresponding `mcp-v<version>` tag;
+5. let `.github/workflows/mcp-publish.yml` authenticate with GitHub OIDC and
+   publish after owner approval in the `mcp-registry` environment;
+6. confirm the version through the Registry API.
+
+Never reuse a published version number.
+
+The publisher is pinned to v1.8.1 and its Linux archive SHA-256 is checked
+against `.github/release/mcp-publisher.sha256` before execution. Ordinary
+branch pushes only run CI; they do not deploy or publish. A release tag is a
+separate publication action. Configure both GitHub environment protections
+before dispatching deployments or pushing release tags.

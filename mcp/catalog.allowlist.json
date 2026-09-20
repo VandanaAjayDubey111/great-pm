@@ -1,0 +1,208 @@
+{
+  "methods": [
+    {
+      "id": "continuous-discovery",
+      "stage": "discover",
+      "tags": ["discovery", "research", "cadence"]
+    },
+    {
+      "id": "jobs-to-be-done",
+      "stage": "discover",
+      "tags": ["research", "jtbd", "customer-needs"]
+    },
+    {
+      "id": "user-research",
+      "stage": "discover",
+      "tags": ["research", "interviews", "insights"]
+    },
+    {
+      "id": "mom-test",
+      "stage": "discover",
+      "tags": ["research", "interviews", "validation"]
+    },
+    {
+      "id": "opportunity-solution-tree",
+      "stage": "discover",
+      "tags": ["discovery", "opportunities", "experiments"]
+    },
+    {
+      "id": "competitive-analysis",
+      "stage": "strategize",
+      "tags": ["competition", "market", "positioning"]
+    },
+    {
+      "id": "porters-five-forces",
+      "stage": "strategize",
+      "tags": ["competition", "market", "strategy"]
+    },
+    {
+      "id": "swot-analysis",
+      "stage": "strategize",
+      "tags": ["strategy", "market", "risk"]
+    },
+    {
+      "id": "product-strategy-stack",
+      "stage": "strategize",
+      "tags": ["strategy", "vision", "choices"]
+    },
+    {
+      "id": "working-backwards",
+      "stage": "strategize",
+      "tags": ["strategy", "customer", "narrative"]
+    },
+    {
+      "id": "pricing-models",
+      "stage": "strategize",
+      "tags": ["pricing", "monetization", "business-model"]
+    },
+    {
+      "id": "prioritization-methods",
+      "stage": "prioritize",
+      "tags": ["prioritization", "scoring", "tradeoffs"]
+    },
+    {
+      "id": "impact-mapping",
+      "stage": "prioritize",
+      "tags": ["outcomes", "roadmap", "alignment"]
+    },
+    {
+      "id": "outcome-roadmap",
+      "stage": "prioritize",
+      "tags": ["roadmap", "outcomes", "planning"]
+    },
+    {
+      "id": "brainstorm-okrs",
+      "stage": "prioritize",
+      "tags": ["okrs", "goals", "metrics"]
+    },
+    {
+      "id": "prd-authoring",
+      "stage": "define",
+      "tags": ["prd", "requirements", "acceptance-criteria"]
+    },
+    {
+      "id": "metrics-design",
+      "stage": "define",
+      "tags": ["metrics", "instrumentation", "success"]
+    },
+    {
+      "id": "experiment-design",
+      "stage": "measure",
+      "tags": ["experiments", "hypotheses", "statistics"]
+    },
+    {
+      "id": "launch-readiness",
+      "stage": "launch",
+      "tags": ["launch", "rollout", "risk"]
+    },
+    {
+      "id": "growth-loops",
+      "stage": "measure",
+      "tags": ["growth", "loops", "retention"]
+    },
+    {
+      "id": "cohort-analysis",
+      "stage": "measure",
+      "tags": ["analytics", "cohorts", "retention"]
+    },
+    {
+      "id": "funnel-diagnostics",
+      "stage": "measure",
+      "tags": ["analytics", "funnel", "conversion"]
+    },
+    {
+      "id": "pre-mortem",
+      "stage": "cross-functional",
+      "tags": ["risk", "planning", "failure-modes"]
+    },
+    {
+      "id": "stakeholder-map",
+      "stage": "cross-functional",
+      "tags": ["stakeholders", "alignment", "communication"]
+    },
+    {
+      "id": "responsible-ai-guardrails",
+      "stage": "cross-functional",
+      "tags": ["ai", "safety", "governance"]
+    },
+    {
+      "id": "ai-use-case-scoping",
+      "stage": "cross-functional",
+      "tags": ["ai", "scoping", "feasibility"]
+    },
+    {
+      "id": "ai-evals",
+      "stage": "measure",
+      "tags": ["ai", "evaluation", "quality"]
+    },
+    {
+      "id": "cost-model",
+      "stage": "cross-functional",
+      "tags": ["cost", "economics", "planning"]
+    }
+  ],
+  "templates": [
+    {
+      "id": "prd",
+      "title": "Product Requirements Document",
+      "path": "templates/PRD-template.md"
+    },
+    {
+      "id": "discovery-brief",
+      "title": "Discovery Brief",
+      "path": "templates/DISCOVERY-BRIEF-template.md"
+    },
+    {
+      "id": "strategy",
+      "title": "Product Strategy",
+      "path": "templates/STRATEGY-template.md"
+    },
+    {
+      "id": "roadmap",
+      "title": "Outcome Roadmap",
+      "path": "templates/ROADMAP-template.md"
+    },
+    {
+      "id": "metrics-plan",
+      "title": "Metrics Plan",
+      "path": "templates/METRICS-PLAN-template.md"
+    },
+    {
+      "id": "launch-plan",
+      "title": "Launch Plan",
+      "path": "templates/LAUNCH-PLAN-template.md"
+    },
+    {
+      "id": "experiment",
+      "title": "Experiment Plan",
+      "path": "templates/EXPERIMENT-template.md"
+    },
+    {
+      "id": "pricing-plan",
+      "title": "Pricing Plan",
+      "path": "templates/PRICING-PLAN-template.md"
+    },
+    {
+      "id": "competitive-brief",
+      "title": "Competitive Brief",
+      "path": "templates/COMPETITIVE-BRIEF-template.md"
+    },
+    {
+      "id": "gtm-plan",
+      "title": "Go-to-Market Plan",
+      "path": "templates/GTM-PLAN-template.md"
+    }
+  ],
+  "docs": [
+    {
+      "id": "workflow",
+      "title": "GreatPM Workflow",
+      "path": "mcp/content/workflow.md"
+    },
+    {
+      "id": "human-gates",
+      "title": "GreatPM Human Gates",
+      "path": "mcp/content/human-gates.md"
+    }
+  ]
+}

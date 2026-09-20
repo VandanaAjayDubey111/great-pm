@@ -63,6 +63,34 @@ gracefully where absent): [`superpowers`](https://github.com/obra/superpowers)
 tracking. These are soft recommendations, not hard install-blocking
 dependencies.
 
+## Public remote MCP
+
+GreatPM is also live as a free, public, read-only remote MCP server:
+
+```text
+https://greatpm-mcp.vandana424-s.workers.dev/mcp
+```
+
+Add it to Codex:
+
+```bash
+codex mcp add great-pm --url https://greatpm-mcp.vandana424-s.workers.dev/mcp
+```
+
+The remote server works across compatible MCP clients and exposes curated
+methods, templates, prompts, and a six-stage workflow. It does not access local
+files, run the 48-agent harness, use connectors, or make writes. See the
+[public MCP installation guide](docs/MCP.md) for Codex, VS Code, Claude, and
+generic client setup.
+
+Verified with Codex CLI 0.153.4 on 2026-09-20: all three tools succeeded
+against the live server. See [compatibility and launch evidence](docs/MCP-READINESS.md).
+The full Codex-native GreatPM plugin is packaged in `plugins/great-pm/`.
+Installing the MCP gives Codex the public knowledge tools; install the native
+plugin for the full product-management operating system. Both are included in
+this review branch. Public repository installation requires the plugin release
+to reach `main` first. See [the prepared release review](docs/release/REVIEW.md).
+
 ## What great-pm does
 
 A product team in software:

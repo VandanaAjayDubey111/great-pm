@@ -1,0 +1,59 @@
+name: Publish GreatPM MCP metadata
+
+on:
+  push:
+    tags: ["mcp-v*"]
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: greatpm-mcp-registry
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: mcp-registry
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: mcp/package-lock.json
+
+      - name: Verify tag matches release metadata
+        working-directory: mcp
+        run: npm run release:check-tag -- "$GITHUB_REF_NAME"
+
+      - name: Verify release
+        working-directory: mcp
+        run: |
+          npm ci
+          npm run catalog:check
+          npm test -- --run
+          npm run typecheck
+
+      - name: Smoke-test public endpoint
+        working-directory: mcp
+        run: npm run smoke:remote -- https://greatpm-mcp.vandana424-s.workers.dev/mcp
+
+      - name: Install MCP publisher
+        run: |
+          curl --fail --location --retry 3 --output mcp-publisher.tar.gz \
+            https://github.com/modelcontextprotocol/registry/releases/download/v1.8.1/mcp-publisher_linux_amd64.tar.gz
+          sha256sum --check .github/release/mcp-publisher.sha256
+          tar xzf mcp-publisher.tar.gz mcp-publisher
+
+      - name: Authenticate to MCP Registry
+        run: ./mcp-publisher login github-oidc
+
+      - name: Publish remote server metadata
+        run: ./mcp-publisher publish
