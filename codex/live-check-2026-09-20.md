@@ -52,3 +52,28 @@ The observed live delegation and resume results above remain **1.1.4 evidence**,
 ## Hosting deferral
 
 After repeated local OAuth callback failures, the owner asked on 2026-09-20 to skip the optional hosting step and move forward. Cloudflare login attempts are paused. They are not required for the native Codex plugin or for pushing code to GitHub. Hosted deployment, Registry publication and a public remote-service launch remain pending; no hosting provider substitution or authentication bypass is authorized by this deferral.
+
+## Follow-up release checks and 1.1.6 correction
+
+The owner requested continuing the authorized work without step-by-step pauses.
+The supported CLI hook browser on 0.153.4 reported **five installed hooks,
+zero active, five awaiting review**. `PreToolUse` explicitly showed source
+`Plugin - great-pm@great-pm` and the installed 1.1.5 command. No trust was
+granted and no bypass flag was used. Desktop Computer Use returned a safety
+restriction for `com.openai.codex`; no alternative UI-control workaround was
+attempted. Human hook trust remains a real prerequisite, not a code test.
+
+The installation guide incorrectly implied that hooks were limited to the
+model's session permissions. The CLI explicitly warns that trusted hooks can
+run outside its sandbox. The guide now discloses this boundary, the startup
+shortcut side effect, and the supported `/hooks` review route. The documentation
+regression failed before correction and passed afterward.
+
+A broader reference audit also found `docs/HARNESS-LOOPS.md` missing, although
+both the operating-model skill and PM lead reference it. A new regression
+reproduced ENOENT. The **1.1.6** candidate copies only that explicitly allowlisted
+canonical runtime document; private research and release documents are not
+packaged. The generated package has **317 files**. All **134** Codex/shared
+tests pass; generated freshness and whitespace checks pass. Independent review
+found no actionable issue in these scoped fixes. This is not itself a new
+full-workflow pass; version-specific live results must be recorded separately.

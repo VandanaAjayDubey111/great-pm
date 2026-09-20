@@ -16,6 +16,23 @@ async function supportingFiles(root, relative = '') {
   return result;
 }
 
+test('the operating model and PM lead can resolve the bundled harness guide', async () => {
+  const temp = await mkdtemp(path.join(os.tmpdir(), 'greatpm-harness-guide-'));
+  try {
+    await packagePlugin({ sourceRoot: new URL('../../', import.meta.url), outputRoot: temp });
+    for (const entry of ['agents/pm-lead.md', 'skills/great-pm/SKILL.md']) {
+      assert.match(await readFile(path.join(temp, entry), 'utf8'), /docs\/HARNESS-LOOPS\.md/);
+    }
+    assert.deepEqual(
+      await readFile(path.join(temp, 'docs/HARNESS-LOOPS.md')),
+      await readFile(new URL('../../docs/HARNESS-LOOPS.md', import.meta.url))
+    );
+    assert.deepEqual(await readdir(path.join(temp, 'docs')), ['HARNESS-LOOPS.md']);
+  } finally {
+    await rm(temp, { recursive: true, force: true });
+  }
+});
+
 test('every skill supporting file survives packaging with its canonical content', async () => {
   const temp = await mkdtemp(path.join(os.tmpdir(), 'greatpm-supporting-files-'));
   const sourceRoot = new URL('../../', import.meta.url);

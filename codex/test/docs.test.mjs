@@ -21,6 +21,9 @@ test('Codex public installation and operations are documented', async () => {
   assert.match(guide, /34 workflows/);
   assert.match(guide, /\$pm-help/);
   assert.match(guide, /hook review/i);
+  assert.match(guide, /outside (?:the )?Codex.*sandbox/i);
+  assert.match(guide, /\/hooks/);
+  assert.doesNotMatch(guide, /Hooks operate only with the permissions available to the Codex\s+session/);
   assert.match(readme, /Codex desktop and Codex CLI/);
   assert.match(readme, /docs\/CODEX\.md/);
   assert.match(parity, /CLI smoke \| PASS/);
