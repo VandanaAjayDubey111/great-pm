@@ -24,7 +24,8 @@
 
 - [x] Retain the observed 1.1.4 real delegation/resume evidence. Do not mislabel a synthetic discovery stop as successful strategy-gate traversal.
 - [ ] Verify desktop hook review and actual lifecycle operation, without bypassing trust. CLI reports five hooks awaiting review and zero active; desktop screen control is prohibited by the host.
-- [ ] Complete strategy-gate traversal with appropriate evidence; do not weaken production validation requirements or falsely label synthetic interviews.
+- [ ] Complete strategy-gate traversal with appropriate evidence; do not weaken production validation requirements or falsely label synthetic interviews. The extended 1.1.5 run reached all nine selected specialists and preserved NEEDS-WORK/BLOCKED results, but fixture capacity/context gaps prevented a gate. The coordinator's final return then hit a host idle timeout; the already-blocked process was interrupted. See the version-specific evidence, not a pass claim.
+- [x] Install local 1.1.6, compare the supplied package files, verify the bundled guide and installed doctor, and inspect a fresh session's hook state (five require review, zero active). No trust granted.
 - [ ] Deferred by owner: check Cloudflare identity, deployment permissions, limits, logs and rollback. Do not restart login until hosting is resumed; never put secrets in chat or git.
 
 ## 3. Update and release

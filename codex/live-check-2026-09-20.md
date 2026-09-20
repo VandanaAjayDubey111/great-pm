@@ -77,3 +77,89 @@ packaged. The generated package has **317 files**. All **134** Codex/shared
 tests pass; generated freshness and whitespace checks pass. Independent review
 found no actionable issue in these scoped fixes. This is not itself a new
 full-workflow pass; version-specific live results must be recorded separately.
+
+## Extended 1.1.5 live exercise and terminal limitation
+
+A separate disposable workspace exercised the installed **1.1.5** package with
+real feedback records from one owner. The records, generated product drafts,
+and full private reviews are not included in this repository. They are not a
+multi-participant interview study or market validation.
+
+The real host returned these specialist results; internal identifiers are the
+canonical names with hyphens replaced by underscores. The returned agent paths
+were `/root/query_refiner_pm`, `/root/pm_lead`, and
+`/root/pm_lead/<internal_identifier>` for the delegated specialists.
+
+| Canonical role | Observed result |
+|---|---|
+| query-refiner-pm | DONE; refinement persisted |
+| user-researcher | DONE; bounded discovery brief |
+| feedback-synthesizer | DONE; feedback digest |
+| market-analyst | DONE; competitive brief, unknown sizing preserved |
+| product-strategist | DONE; strategy draft |
+| pricing-strategist | DONE; no separate paid model, unknown willingness to pay |
+| prioritization-analyst | DONE; ranked backlog |
+| roadmap-planner | BLOCKED; draft saved but capacity proof remained unsatisfied |
+| devils-advocate | DONE; five blocking test-scenario decisions recorded |
+| pm-reviewer | DONE; exact verdict NEEDS-WORK, six must-fix findings, three suggestions |
+| pm-lead | BLOCKED persisted in the coordinator artifact and verdict log; final return interrupted as described below |
+
+Discover and Strategize completed; Prioritize could not pass the roadmap's
+capacity proof without a cycle boundary and capacity/effort basis. The two
+review roles still reviewed an internal packet explicitly labelled blocked,
+not for approval. The reviewer verdict remained **NEEDS-WORK** and the
+skeptical-triage arbiter remained **WEAK**. Open test decision IDs were
+`gprelease-gv4`, `gprelease-dmv`, `gprelease-jjx`, `gprelease-ee8`, and
+`gprelease-w9j`. These reflect the bounded fixture's incomplete context; they
+do not reopen or override the owner's approved full-parity build decision.
+
+Direct Beads checks found **no strategy gate and no Define-stage task**.
+No gate was approved or closed. The four-slot host limit meant only two
+specialists could run beside the root and coordinator; dependent roles ran
+in order rather than being falsely reported as concurrent.
+
+The coordinator persisted its blocked report, but its final return stalled.
+The host logged a root stream retry at 15:28:38 UTC and a coordinator idle
+WebSocket timeout at 15:30:01 UTC. The identified acceptance CLI process was
+interrupted with SIGINT after these observations; it exited 1. Its root final
+report was not obtained. This is **not** a clean end-to-end pass, a pending-gate
+traversal, or evidence that all 48 roles have executed. The known durable
+specialist results and safe stop are retained without concealing that limit.
+
+Other observed conditions included recovered stream failures, analytics/model
+refresh warnings, skills-context shortening, Beads auto-export failures while
+the task store remained usable, and recovered patch attempts. The main agent
+independently verified the persisted reviewer/coordinator logs and artifacts
+after the patch failures. Generic host icon warnings were not attributed to
+GreatPM without identifying the responsible plugin.
+
+## Local 1.1.6 upgrade and trust status
+
+After ending the 1.1.5 exercise, `codex plugin add great-pm@great-pm --json`
+installed **1.1.6** from the local marketplace. All supplied package files match
+the reviewed generated tree; Codex additionally created its own
+`.codex-plugin/migrated-command-skills` directory. The installed harness guide
+matches canonical content and the installed doctor returns `ok: true`.
+
+A fresh CLI 0.153.4 session again reported five installed hooks, **zero active**,
+and five requiring review. Both inspection sessions were exited without trust
+or bypass. The five hook definitions/scripts are unchanged between 1.1.5 and
+1.1.6, but the current installation still requires explicit review. Automatic
+lifecycle operation and desktop validation remain unverified. This local
+upgrade is not a default-branch installation or a public release.
+
+## Focused report-recovery retry
+
+At the owner's request, a fresh `codex exec resume` retried only the interrupted
+report, using the saved verdicts and a bounded Beads check. It completed with
+exit 0 and returned the final report without rerunning specialists, changing
+trust, resolving decisions, or publishing private material. The recovered
+report confirms the original 1.1.5 **BLOCKED / NEEDS-WORK** outcome and no gate
+or Define entry. Recovery of the response does not turn that workflow into a
+passing gate traversal or into 1.1.6 workflow evidence.
+
+Fresh retry verification: 22 Codex tests, 112 shared tests and 47 server tests
+pass (181 total); generated package freshness passes at 317 files. The
+remaining prerequisites are unchanged: complete the bounded gate-path test,
+obtain explicit hook trust and verify lifecycle/desktop behavior. Hosting is
+still paused. The private local report and test drafts remain outside Git.
