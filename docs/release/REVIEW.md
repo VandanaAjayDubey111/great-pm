@@ -1,6 +1,6 @@
 # GreatPM release review — 2026-09-20
 
-**State: draft PRs #2 and #3 are open. Plugin fixes are being synchronized; hosting is paused at the owner's request. No public-release completion is claimed.**
+**State: draft PRs #2 and #3 are open. The reviewed 1.1.6 fixes are pushed with passing CI; native live verification is continuing. Hosting is paused at the owner's request. No public-release completion is claimed.**
 
 ## Destination and releases
 
@@ -142,7 +142,7 @@ The owner reviewed both PRs and approved the unchanged release route before
 subsequently pausing hosting. Branch pushes and the scoped bug fixes are
 authorized; no force push or bypass of release checks is needed.
 
-1. Synchronize the reviewed 1.1.6 fixes to both branches and verify fresh CI.
+1. Completed: synchronize the reviewed 1.1.6 fixes to both branches and verify fresh CI (plugin `f67d815`, integrated `f2fbd94`).
 2. Finish native-plugin live/desktop sign-off; merge PR #2 first only after
    those prerequisites pass.
 3. When hosting is resumed, apply reviewed GitHub settings and securely supply
