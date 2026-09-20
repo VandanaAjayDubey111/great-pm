@@ -13,8 +13,20 @@ Installation, hook trust, setup and troubleshooting are documented in
 The v1.1.3 package also fixes host conversion so specialist verdict paths,
 relative skill links and URLs remain valid while workflow invocations use `$`.
 
-Validation: 20 Codex tests and 112 shared connector/adapter tests pass; the
+The current 1.1.5 candidate also maps canonical specialist names to
+Codex-compatible internal identifiers and preserves supporting skill files,
+including WORKFLOW.md. `$grill-me` and all public role names remain unchanged.
+
+Validation: 21 Codex tests and 112 shared connector/adapter tests pass; the
 generated package is current. The recorded full live `$pm-start` to strategy
 gate and desktop hook-trust checks remain pending. This should remain a draft
 release candidate until those checks are completed; packaged inventory parity
 is not proof that every live workflow has been exercised.
+
+Live 1.1.4 checks verified real specialist delegation and bounded resume, and
+correctly stopped discovery on insufficient synthetic evidence. 1.1.5 has
+fresh packaging tests and installed-file verification, not a newly completed
+end-to-end run. See `codex/live-check-2026-09-20.md` for the distinctions.
+
+Cloudflare setup is paused at the owner's request; it is not needed to install
+the native plugin or push this PR.

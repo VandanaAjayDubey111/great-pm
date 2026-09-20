@@ -27,8 +27,8 @@
 
 ## 3. Update and release
 
-- [ ] Commit only reviewed fixes/docs/generated package on the existing plugin branch; preserve unrelated untracked files.
-- [ ] Merge the plugin branch into the stacked release-review branch without force pushes; regenerate integrated assets if needed and rerun all tests.
+- [x] Commit only reviewed fixes/docs/generated package on the existing plugin branch; preserve unrelated untracked files. Plugin fix: `2cbc56d`.
+- [x] Merge the plugin branch into the stacked release-review branch without force pushes; regenerate integrated assets if needed and rerun all tests. Integrated automated total: 180 passing; generated package current.
 - [ ] Push both branches; verify both GitHub CI results.
 - [ ] After prerequisites pass, merge plugin PR #2 first. Retarget PR #3 to main and rerun checks before its merge.
 - [ ] Apply prepared GitHub environment review/branch restrictions and securely configure deployment credentials.

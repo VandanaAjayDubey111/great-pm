@@ -1,6 +1,6 @@
 # GreatPM release review — 2026-09-20
 
-**State: prepared locally for Vandana's review; nothing pushed in this task.**
+**State: draft PRs #2 and #3 are open. Plugin fixes are being synchronized; hosting is paused at the owner's request. No public-release completion is claimed.**
 
 ## Destination and releases
 
@@ -18,7 +18,7 @@
 | Second PR initial base | `codex/greatpm-codex-plugin` (stacked on the first PR) |
 | Second PR title | Add the public GreatPM MCP with verified Codex compatibility |
 | Second PR description | [MCP-PR.md](MCP-PR.md) |
-| Codex plugin candidate | `1.1.3` |
+| Codex plugin candidate | `1.1.5` |
 | Claude plugin candidate | `1.0.1` |
 | MCP candidate / future tag | `1.0.0` / `mcp-v1.0.0` |
 | MCP URL | https://greatpm-mcp.vandana424-s.workers.dev/mcp |
@@ -45,6 +45,9 @@ Prefer a normal merge commit for the first PR so stacked history is preserved.
   `.great-pm/verdicts/pm-reviewer.log` and upstream attribution URLs retain their
   slashes; workflow invocations still become `$pm-help` / `$grill-me`.
 - Bumped Codex to 1.1.3 so the corrected package has a distinct cache version.
+- Subsequent 1.1.5 candidate fixes internal specialist spawn identifiers and
+  includes supporting skill files such as `skills/great-pm/WORKFLOW.md`.
+  Public workflow and specialist names, including `$grill-me`, are unchanged.
 - Added a regression test that reproduces the path/URL corruption before the
   fix and passes after it.
 - Kept deployment manual and restricted to `main`; added serialized jobs and
@@ -57,8 +60,9 @@ Prefer a normal merge commit for the first PR so stacked history is preserved.
 
 ## Verification
 
-- 20 Codex tests, 47 MCP tests, 112 shared tests: **179 passing**.
-- Codex generated package: current, 315 files.
+- 21 Codex tests, 47 MCP tests, 112 shared tests: **180 passing** on the
+  integrated 1.1.5 candidate.
+- Codex generated package: current, 316 files.
 - MCP catalog freshness, TypeScript and Worker dry-run bundle: pass.
 - MCP Registry's official validator: `server.json is valid`; no publication.
 - Workflow YAML, embedded shell blocks and review JSON: parse successfully.
@@ -71,9 +75,19 @@ Prefer a normal merge commit for the first PR so stacked history is preserved.
 Automated tests do not substitute for the remaining live native-plugin and
 desktop checks recorded in `codex/smoke-evidence.json`. The full live
 `$pm-start` to strategy gate was previously blocked by host stream resets.
-That historical check has not been silently marked passed.
+That historical check has not been silently marked passed. The new
+`codex/live-check-2026-09-20.md` records the 1.1.4 live delegation/resume
+verification and the 1.1.5 packaging checks separately. Discovery correctly
+stopped on insufficient synthetic evidence; full strategy-gate traversal and
+desktop hook trust/event delivery remain open.
 
 ## Account setup prepared for after review
+
+**Deferred:** on 2026-09-20, after repeated local OAuth callback failures, the
+owner requested skipping optional hosting and moving forward. Do not restart
+login, deploy, or publish Registry metadata as part of the plugin-only progress.
+Cloudflare authentication is not required to install the native plugin or push
+GitHub branches. It remains required for the chosen hosted deployment route.
 
 The repository had no environment or repository secrets when checked. The
 Cloudflare login is expired and cannot be refreshed non-interactively. No
@@ -119,18 +133,19 @@ deployment, confirm account limits/logging and the current Worker revision.
 The release workflow uses GitHub OIDC for Registry login and needs no static
 Registry password.
 
-## Actions awaiting approval
+## Remaining release steps
 
-1. Approve the two branch pushes and creation of the two draft PRs described
-   above. No force push is needed. This does not include a merge, deployment,
-   release tag, Registry publication, or public announcement.
-2. Apply the reviewed GitHub settings and supply the Cloudflare credentials.
-3. Finish native plugin live/desktop sign-off; merge that PR first.
-4. Complete second-client and hosting/rollback checks, then review and merge
-   the MCP PR. Run CI again against the final release commit.
-5. Separately approve the production deployment and Registry release tag after
-   verifying the deployed version and unused Registry version number.
+The owner reviewed both PRs and approved the unchanged release route before
+subsequently pausing hosting. Branch pushes and the scoped bug fixes are
+authorized; no force push or bypass of release checks is needed.
 
-Your original instruction to review before pushing is the reason this task
-stops here. Authentication and the remaining host checks are explicitly open;
-this document does not claim that public launch is complete.
+1. Synchronize the reviewed 1.1.5 fixes to both branches and verify fresh CI.
+2. Finish native-plugin live/desktop sign-off; merge PR #2 first only after
+   those prerequisites pass.
+3. When hosting is resumed, apply reviewed GitHub settings and securely supply
+   deployment credentials. Complete second-client and hosting/rollback checks.
+4. Retarget PR #3 to `main`, inspect its diff and rerun CI before its merge.
+5. Verify deployment and the unused Registry version before publishing.
+
+Authentication and the remaining host checks are explicitly open. This
+document does not claim that the reviewed candidate is publicly launched.
