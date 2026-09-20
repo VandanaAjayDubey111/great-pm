@@ -78,7 +78,7 @@ bd close "$GATE_ID" --reason="Approved via $pm-gate approve by human" 2>/dev/nul
 mkdir -p .great-pm/verdicts
 TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 LINE="$TS | pm-gate | APPROVED | id=$GATE_ID"
-echo "$LINE" >> .great-pm/verdicts$pm-gate.log
+echo "$LINE" >> .great-pm/verdicts/pm-gate.log
 echo "$LINE" >> ".great-pm/verdicts/$(date +%Y-%m-%d).log"
 
 echo "✓ Gate $GATE_ID approved and closed."
@@ -121,7 +121,7 @@ bd update "$GATE_ID" --status=blocked --notes="Rejected by human: $REASON" 2>/de
 mkdir -p .great-pm/verdicts
 TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 LINE="$TS | pm-gate | REJECTED | id=$GATE_ID | reason=$REASON"
-echo "$LINE" >> .great-pm/verdicts$pm-gate.log
+echo "$LINE" >> .great-pm/verdicts/pm-gate.log
 echo "$LINE" >> ".great-pm/verdicts/$(date +%Y-%m-%d).log"
 
 echo "✗ Gate $GATE_ID rejected: $REASON"

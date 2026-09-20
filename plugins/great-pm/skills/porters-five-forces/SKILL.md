@@ -16,7 +16,7 @@ description: "Perform Porter's Five Forces analysis — competitive rivalry, sup
 - Preserve GreatPM human gates, governance, state, and reporting contracts.
 
 
-> **Provenance.** Vendored from `phuryn$pm-skills@porters-five-forces` (MIT, Paweł Huryn / Product Compass — github.com/phuryn$pm-skills). Adapted into great-pm 2026-05-29 with attribution. Host agent: product-strategist.
+> **Provenance.** Vendored from `phuryn/pm-skills@porters-five-forces` (MIT, Paweł Huryn / Product Compass — github.com/phuryn/pm-skills). Adapted into great-pm 2026-05-29 with attribution. Host agent: product-strategist.
 # Porter's Five Forces
 
 ## Metadata

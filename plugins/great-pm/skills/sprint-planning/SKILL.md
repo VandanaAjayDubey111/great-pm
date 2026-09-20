@@ -16,8 +16,8 @@ description: "Plan a sprint with capacity estimation, story selection against De
 - Preserve GreatPM human gates, governance, state, and reporting contracts.
 
 
-> **Provenance.** Adapted from `phuryn$pm-skills@sprint-plan` (MIT License,
-> Paweł Huryn / Product Compass — github.com/phuryn$pm-skills). Vendored into
+> **Provenance.** Adapted from `phuryn/pm-skills@sprint-plan` (MIT License,
+> Paweł Huryn / Product Compass — github.com/phuryn/pm-skills). Vendored into
 > great-pm 2026-05-29 with great-pm-convention frontmatter. MIT permits commercial
 > use with attribution; this header is the attribution.
 

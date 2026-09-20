@@ -329,10 +329,10 @@ downstream agents can grep ONE LINE instead of re-parsing prose.
 mkdir -p .great-pm/verdicts
 TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 LINE="$TS | pm-lead | <DONE|BLOCKED|HELD> | <key=value pairs — e.g. initiative=<slug> artefact=<path> verdict=<...>>"
-echo "$LINE" >> ".great-pm/verdicts$pm-lead.log"
+echo "$LINE" >> ".great-pm/verdicts/pm-lead.log"
 echo "$LINE" >> ".great-pm/verdicts/$(date +%Y-%m-%d).log"
 ```
 
 Why two logs:
-- `.great-pm/verdicts$pm-lead.log` — fast per-agent history (`$pm-agent-review pm-lead` reads this)
+- `.great-pm/verdicts/pm-lead.log` — fast per-agent history (`$pm-agent-review pm-lead` reads this)
 - `.great-pm/verdicts/<date>.log` — daily cross-agent timeline (`$pm-board` reads this)

@@ -24,8 +24,10 @@ function convertHostText(text) {
     .replaceAll('${CLAUDE_PLUGIN_ROOT}', '${PLUGIN_ROOT}')
     .replaceAll('$HOME/great-pm/', '${PLUGIN_ROOT}/')
     .replaceAll('~/great-pm/', '${PLUGIN_ROOT}/')
-    .replace(/(?<![A-Za-z0-9_-])\/grill-me\b/g, '$grill-me')
-    .replace(/\/pm-([a-z-]+)/g, '$pm-$1')
+    .replace(
+      /(?<![A-Za-z0-9_./-])\/(pm-[a-z-]+|grill-me)(?![A-Za-z0-9_/-]|\.[A-Za-z0-9])/g,
+      (_, command) => `$${command}`
+    )
     .replaceAll('`pm-audit` skill', '`method-pm-audit` skill')
     .replaceAll('Agent tool', 'Codex subagent tools');
 }

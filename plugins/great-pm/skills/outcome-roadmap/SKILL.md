@@ -16,7 +16,7 @@ description: "Transform an output-focused roadmap into an outcome-focused one th
 - Preserve GreatPM human gates, governance, state, and reporting contracts.
 
 
-> **Provenance.** Vendored from `phuryn$pm-skills@outcome-roadmap` (MIT, Paweł Huryn / Product Compass — github.com/phuryn$pm-skills). Adapted into great-pm 2026-05-29 with attribution. Host agent: roadmap-planner.
+> **Provenance.** Vendored from `phuryn/pm-skills@outcome-roadmap` (MIT, Paweł Huryn / Product Compass — github.com/phuryn/pm-skills). Adapted into great-pm 2026-05-29 with attribution. Host agent: roadmap-planner.
 
 # Transform Roadmap to Outcome-Focused Format
 

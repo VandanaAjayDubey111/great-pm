@@ -175,7 +175,7 @@ async function writeParity(output, counts) {
 async function writeManifest(output) {
   const manifest = {
     name: 'great-pm',
-    version: '1.1.2',
+    version: '1.1.3',
     description: 'The complete GreatPM product-management operating system for Codex.',
     author: {
       name: 'Vandana Dubey',

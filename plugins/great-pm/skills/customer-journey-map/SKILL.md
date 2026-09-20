@@ -16,7 +16,7 @@ description: "Create an end-to-end customer journey map with stages, touchpoints
 - Preserve GreatPM human gates, governance, state, and reporting contracts.
 
 
-> **Provenance.** Vendored from `phuryn$pm-skills@customer-journey-map` (MIT, Paweł Huryn / Product Compass — github.com/phuryn$pm-skills). Adapted into great-pm 2026-05-29 with attribution. Host agent: user-researcher.
+> **Provenance.** Vendored from `phuryn/pm-skills@customer-journey-map` (MIT, Paweł Huryn / Product Compass — github.com/phuryn/pm-skills). Adapted into great-pm 2026-05-29 with attribution. Host agent: user-researcher.
 
 ## Customer Journey Map
 

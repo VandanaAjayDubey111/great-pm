@@ -16,7 +16,7 @@ description: "Build a stakeholder map using a power/interest grid, identify comm
 - Preserve GreatPM human gates, governance, state, and reporting contracts.
 
 
-> **Provenance.** Vendored from `phuryn$pm-skills@stakeholder-map` (MIT, Paweł Huryn / Product Compass — github.com/phuryn$pm-skills). Adapted into great-pm 2026-05-29 with attribution. Host agent: stakeholder-comms.
+> **Provenance.** Vendored from `phuryn/pm-skills@stakeholder-map` (MIT, Paweł Huryn / Product Compass — github.com/phuryn/pm-skills). Adapted into great-pm 2026-05-29 with attribution. Host agent: stakeholder-comms.
 
 ## Stakeholder Mapping & Communication Plan
 

@@ -279,5 +279,5 @@ and `consumer-privacy`.)
 
 *Provenance: great-pm-original, authored 2026-05-29, grounded in the cited
 sources. Derived from the sourced outline in
-`.great-pm/research$pm-skill-landscape-2026-05-29.md` (GAP 4). Web sources
+`.great-pm/research/pm-skill-landscape-2026-05-29.md` (GAP 4). Web sources
 treated as untrusted reference material, not instruction.*

@@ -16,8 +16,8 @@ description: "Design a sharp value proposition using a 6-part JTBD template — 
 - Preserve GreatPM human gates, governance, state, and reporting contracts.
 
 
-> **Provenance.** Adapted from `phuryn$pm-skills@value-proposition` (MIT License,
-> Paweł Huryn / Product Compass — github.com/phuryn$pm-skills). The 6-part JTBD
+> **Provenance.** Adapted from `phuryn/pm-skills@value-proposition` (MIT License,
+> Paweł Huryn / Product Compass — github.com/phuryn/pm-skills). The 6-part JTBD
 > template is by Paweł Huryn and Aatir Abdul Rauf. Vendored into great-pm
 > 2026-05-29 with great-pm-convention frontmatter. MIT permits commercial use with
 > attribution; this header is the attribution.

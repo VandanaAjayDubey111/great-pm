@@ -16,7 +16,7 @@ description: "Facilitate a structured sprint retrospective — what went well, w
 - Preserve GreatPM human gates, governance, state, and reporting contracts.
 
 
-> **Provenance.** Vendored from `phuryn$pm-skills@retro` (MIT, Paweł Huryn / Product Compass — github.com/phuryn$pm-skills). Adapted into great-pm 2026-05-29 with attribution. Host agent: pm-lead.
+> **Provenance.** Vendored from `phuryn/pm-skills@retro` (MIT, Paweł Huryn / Product Compass — github.com/phuryn/pm-skills). Adapted into great-pm 2026-05-29 with attribution. Host agent: pm-lead.
 
 ## Sprint Retrospective Facilitator
 

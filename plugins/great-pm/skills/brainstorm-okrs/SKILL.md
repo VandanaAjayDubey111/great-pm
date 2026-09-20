@@ -16,7 +16,7 @@ description: "Brainstorm team-level OKRs aligned with company objectives — qua
 - Preserve GreatPM human gates, governance, state, and reporting contracts.
 
 
-> **Provenance.** Vendored from `phuryn$pm-skills@brainstorm-okrs` (MIT, Paweł Huryn / Product Compass — github.com/phuryn$pm-skills). Adapted into great-pm 2026-05-29 with attribution. Host agent: roadmap-planner.
+> **Provenance.** Vendored from `phuryn/pm-skills@brainstorm-okrs` (MIT, Paweł Huryn / Product Compass — github.com/phuryn/pm-skills). Adapted into great-pm 2026-05-29 with attribution. Host agent: roadmap-planner.
 
 # Brainstorm Team OKRs
 

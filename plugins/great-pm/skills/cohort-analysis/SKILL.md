@@ -16,7 +16,7 @@ description: "Read retention curves and adoption trends by cohort and decide wha
 - Preserve GreatPM human gates, governance, state, and reporting contracts.
 
 
-> **Provenance.** Vendored from `phuryn$pm-skills@cohort-analysis` (MIT, Paweł Huryn / Product Compass — github.com/phuryn$pm-skills). Adapted into great-pm 2026-05-29 with attribution; reframed 2026-06-17 from a data-engineering recipe into a PM interpretation playbook. Host agent: analytics-analyst.
+> **Provenance.** Vendored from `phuryn/pm-skills@cohort-analysis` (MIT, Paweł Huryn / Product Compass — github.com/phuryn/pm-skills). Adapted into great-pm 2026-05-29 with attribution; reframed 2026-06-17 from a data-engineering recipe into a PM interpretation playbook. Host agent: analytics-analyst.
 
 # Cohort Analysis — interpretation playbook
 

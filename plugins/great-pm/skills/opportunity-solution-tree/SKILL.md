@@ -16,8 +16,8 @@ description: "Build an Opportunity Solution Tree (OST) to structure continuous p
 - Preserve GreatPM human gates, governance, state, and reporting contracts.
 
 
-> **Provenance.** Adapted from `phuryn$pm-skills@opportunity-solution-tree` (MIT
-> License, Paweł Huryn / Product Compass — github.com/phuryn$pm-skills). Framework
+> **Provenance.** Adapted from `phuryn/pm-skills@opportunity-solution-tree` (MIT
+> License, Paweł Huryn / Product Compass — github.com/phuryn/pm-skills). Framework
 > is Teresa Torres, *Continuous Discovery Habits*. Vendored into great-pm
 > 2026-05-29 with great-pm-convention frontmatter. MIT permits commercial use with
 > attribution; this header is the attribution.

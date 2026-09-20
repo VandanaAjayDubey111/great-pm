@@ -16,7 +16,7 @@ description: "Generate a Business Model Canvas with all 9 building blocks. Use w
 - Preserve GreatPM human gates, governance, state, and reporting contracts.
 
 
-> **Provenance.** Vendored from `phuryn$pm-skills@business-model` (MIT, Paweł Huryn / Product Compass — github.com/phuryn$pm-skills). Adapted into great-pm 2026-05-29 with attribution. Host agent: product-strategist.
+> **Provenance.** Vendored from `phuryn/pm-skills@business-model` (MIT, Paweł Huryn / Product Compass — github.com/phuryn/pm-skills). Adapted into great-pm 2026-05-29 with attribution. Host agent: product-strategist.
 # Business Model Canvas
 
 ## Metadata

@@ -113,6 +113,6 @@ Keep it terse — only the synthesis, never the full critique.
 mkdir -p .great-pm/verdicts
 TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 LINE="$TS | pm-advisor | <DONE|BLOCKED> | <key=value — e.g. subject=<slug> verdict=<Yes|Not-yet|No> top_risk=<...>>"
-echo "$LINE" >> ".great-pm/verdicts$pm-advisor.log"
+echo "$LINE" >> ".great-pm/verdicts/pm-advisor.log"
 echo "$LINE" >> ".great-pm/verdicts/$(date +%Y-%m-%d).log"
 ```

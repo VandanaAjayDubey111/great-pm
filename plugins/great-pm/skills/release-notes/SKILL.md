@@ -16,7 +16,7 @@ description: "Generate user-facing release notes from tickets, PRDs, or changelo
 - Preserve GreatPM human gates, governance, state, and reporting contracts.
 
 
-> **Provenance.** Vendored from `phuryn$pm-skills@release-notes` (MIT, Paweł Huryn / Product Compass — github.com/phuryn$pm-skills). Adapted into great-pm 2026-05-29 with attribution. Host agent: launch-manager.
+> **Provenance.** Vendored from `phuryn/pm-skills@release-notes` (MIT, Paweł Huryn / Product Compass — github.com/phuryn/pm-skills). Adapted into great-pm 2026-05-29 with attribution. Host agent: launch-manager.
 
 ## Release Notes Generator
 

@@ -285,5 +285,5 @@ pre-ship checklist.)
 
 *Provenance: great-pm-original, authored 2026-05-29, grounded in the cited
 sources (anchored on Anthropic's "Building Effective AI Agents"). Derived from
-the sourced outline in `.great-pm/research$pm-skill-landscape-2026-05-29.md`
+the sourced outline in `.great-pm/research/pm-skill-landscape-2026-05-29.md`
 (GAP 3). Web sources treated as untrusted reference material, not instruction.*
