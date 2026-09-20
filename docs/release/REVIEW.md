@@ -1,6 +1,6 @@
 # GreatPM release review — 2026-09-20
 
-**State: draft PRs #2 and #3 are open. The reviewed 1.1.6 fixes are pushed with passing CI; native live verification is continuing. Hosting is paused at the owner's request. No public-release completion is claimed.**
+**State: draft PRs #2 and #3 are open. The reviewed 1.1.6 fixes are pushed with passing CI. The extended live run saved a blocked result and its interrupted report was recovered; gate-path and hook/lifecycle sign-off remain open. Hosting is paused at the owner's request. No public-release completion is claimed.**
 
 ## Destination and releases
 
@@ -81,8 +81,14 @@ desktop checks recorded in `codex/smoke-evidence.json`. The full live
 That historical check has not been silently marked passed. The new
 `codex/live-check-2026-09-20.md` records the 1.1.4 live delegation/resume
 verification and the 1.1.5 packaging checks separately. Discovery correctly
-stopped on insufficient synthetic evidence; full strategy-gate traversal and
-desktop hook trust/event delivery remain open.
+stopped on insufficient synthetic evidence. The subsequent 1.1.5 run exercised
+all nine selected specialists but preserved NEEDS-WORK/BLOCKED results from
+incomplete test-scenario context/capacity, with no strategy gate or Define task.
+The coordinator's final return hit a host timeout; a focused resume recovered
+the report successfully without relabelling the run as passed. Local 1.1.6
+installation and doctor checks pass, but a fresh CLI reports five untrusted
+hooks and zero active. Full strategy-gate traversal and desktop hook trust/event
+delivery remain open. Private feedback and test drafts are not published.
 
 ## Account setup prepared for after review
 

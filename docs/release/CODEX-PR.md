@@ -26,12 +26,15 @@ release candidate until those checks are completed; packaged inventory parity
 is not proof that every live workflow has been exercised.
 
 Live 1.1.4 checks verified real specialist delegation and bounded resume, and
-correctly stopped discovery on insufficient synthetic evidence. A new 1.1.5
-live workflow run is in progress with actual single-owner conversation feedback;
-it is not yet a completed end-to-end pass. The 1.1.6 packaging and documentation
-fixes have automated regression coverage. CLI inspection confirms all five
-installed hooks still await trust review. See `codex/live-check-2026-09-20.md`
-for the version-specific distinctions.
+correctly stopped discovery on insufficient synthetic evidence. The extended
+1.1.5 exercise returned results from all nine selected specialists but stopped
+before a strategy gate on incomplete fixture context/capacity. The reviewer
+returned NEEDS-WORK; the coordinator persisted BLOCKED before its final return
+hit a host timeout. A focused resume successfully recovered the report without
+rerunning specialists or changing that result. This is not a gate-path pass.
+The local 1.1.6 upgrade matches the reviewed files and passes its installed
+doctor; a fresh CLI confirms five hooks requiring trust and zero active.
+See `codex/live-check-2026-09-20.md` for version-specific evidence and limits.
 
 Cloudflare setup is paused at the owner's request; it is not needed to install
 the native plugin or push this PR.
