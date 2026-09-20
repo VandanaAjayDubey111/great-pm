@@ -5,6 +5,14 @@ Checked: 2026-09-20. Server source baseline: `2ab233b` on
 
 ## Result
 
+**Release preparation update:** the local `codex/greatpm-release-review` branch
+now reconciles both native-plugin and MCP work. See
+[the release review](release/REVIEW.md) for current branch/PR details, combined
+test results, and prepared environment settings. The observations below are
+the earlier standalone MCP check; the branch-integration item is now prepared
+locally. No push or publication has occurred. Cloudflare authentication was
+rechecked during release preparation and has expired.
+
 The existing remote MCP works with Codex CLI 0.153.4. No server transport
 rewrite was necessary. The local Codex connection has been registered and its
 configuration verified. Public release completion remains pending.

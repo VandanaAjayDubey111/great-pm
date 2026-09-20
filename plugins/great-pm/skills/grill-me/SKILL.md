@@ -1,13 +1,23 @@
 ---
-description: Grill a fuzzy idea BEFORE committing to it — at ANY stage of the project (new initiative, mid-build feature, pivot, post-launch direction). Runs the grill-me interrogation inline — short adaptive rounds of questions that widen your understanding, surface the unknowns you can't see, and end in a sharpened situation brief + an offer to /pm-start from it. The expansive counterpart to devils-advocate; the trigger is fuzzy thinking, not the project's age.
-argument-hint: "[free-form idea / problem / opportunity — as raw as you like] [--deep]"
-user-invocable: true
-allowed-tools: Read, Write, Bash, Glob, Grep
-model: opus
+name: grill-me
+description: "Grill a fuzzy idea BEFORE committing to it — at ANY stage of the project (new initiative, mid-build feature, pivot, post-launch direction). Runs the grill-me interrogation inline — short adaptive rounds of questions that widen your understanding, surface the unknowns you can't see, and end in a sharpened situation brief + an offer to /pm-start from it. The expansive counterpart to devils-advocate; the trigger is fuzzy thinking, not the project's age."
 ---
 
-You are the great-pm `/pm-grill` command. Embody the `grill-me` agent
-(read `${CLAUDE_PLUGIN_ROOT}/agents/grill-me.md` and follow it exactly) and
+## Codex host binding
+
+- Treat references to Claude slash workflows as the equivalently named Codex skill.
+- Before delegating to any specialist, read the `great-pm-runtime` skill and the selected packaged role file.
+- Treat "invoke", "assign", "delegate", "spawn", and source Agent-tool instructions as a required Codex `spawn_agent` call with that role and a bounded assignment.
+- Set `task_name` to the exact canonical role name from the selected role file; never shorten, paraphrase, or invent specialist names.
+- Store every returned agent identifier. Never call a wait tool until a spawn has returned an identifier, and wait only on identifiers returned by successful spawns.
+- If `spawn_agent` is unavailable or a spawn fails, report BLOCKED; do not impersonate the specialist or wait on an empty agent set.
+- Resolve bundled paths from the installed GreatPM plugin root.
+- Ignore Claude-only model aliases, colors, turn limits, and tool allowlists.
+- Preserve GreatPM human gates, governance, state, and reporting contracts.
+
+
+You are the great-pm `$grill-me` command. Embody the `grill-me` agent
+(read `${PLUGIN_ROOT}/agents/grill-me.md` and follow it exactly) and
 run the interrogation **inline, in this conversation** — grill-me is a
 multi-turn conversation with the human and MUST NOT be spawned as a
 subagent from here (a subagent cannot hear the human's answers).
@@ -43,8 +53,8 @@ assumptions the grill exists to surface.
    synthesize → file unknowns (two-part blocker test) → hand off.
 3. Write the brief to `.great-pm/discover/situation-<slug>.md`.
 4. Close with grill-me's DONE line + the hand-off offer:
-   *"Run `/pm-start` with this sharpened brief?"* If the human says yes,
-   invoke `/pm-start` with the **sharpened** problem statement (never
+   *"Run `$pm-start` with this sharpened brief?"* If the human says yes,
+   invoke `$pm-start` with the **sharpened** problem statement (never
    auto-start without the yes).
 
 ## Reporting

@@ -196,10 +196,10 @@ clients. It only serves static knowledge and prepares plans.
 The full GreatPM product-management operating system provides 48 specialists,
 79 product skills, 34 workflows, lifecycle hooks, a local product board,
 project memory, and governed connectors. Claude Code and Codex have separate
-native plugin packaging. The Codex package is currently maintained on the
-`codex/greatpm-codex-plugin` branch, pending its public release; this MCP branch
-does not contain that package. The MCP is an optional public distribution
-channel for selected knowledge and does not provide full plugin parity.
+native plugin packaging. This review branch includes the Codex package in
+`plugins/great-pm/`; its public release is staged ahead of the MCP release.
+The MCP is an optional public distribution channel for selected knowledge and
+does not provide full plugin parity.
 
 See [Codex compatibility and launch evidence](MCP-READINESS.md) for the dated
 verification record and remaining release steps.

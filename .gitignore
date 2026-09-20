@@ -18,3 +18,5 @@ credentials*.json
 
 # plugin's own dogfood/runtime project state (not source)
 .great-pm/
+# deterministic Codex plugin comparison output
+.codex-build-check/

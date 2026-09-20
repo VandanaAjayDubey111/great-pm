@@ -12,16 +12,16 @@ its work straight into the tools you already live in: **Notion, Slack, Linear,
 Jira**, two-way, bring-your-own-token, **$0 to operate** (see
 [**Connect your tools**](#connect-your-tools)).
 
-**Status:** v1.0.0 — a Claude Code plugin. 48 agents · 79 skills · 34 commands ·
-the 6-stage loop · a native project board. Install from this repo (see
-**Install** below).
+**Status:** Claude Code v1.0.1 and Codex v1.1.3 are release
+candidates pending final desktop sign-off. **48 agents · 79 skills · 34 commands/workflows** · the 6-stage loop · a native project board.
+Install from this repo (see **Install** below).
 
 ![great-pm project board](docs/screenshots/board.png)
 <sub>The <code>/pm-board</code> board — a live knowledge layer over your product, reading straight from beads + <code>.great-pm/</code>. Shown on a sample "Lumen" initiative (demo data). Full tour in <a href="#screenshots">Screenshots</a>.</sub>
 
-## Install
+## Install in Claude Code
 
-great-pm ships as a Claude Code plugin. This repo *is* its marketplace.
+This repo is the Claude Code marketplace.
 
 ```
 # 1. Add this repo as a plugin marketplace
@@ -39,6 +39,23 @@ On install, Claude Code auto-registers all agents (`agents/`), skills
 and the lifecycle hooks (`SessionStart` context-load, `PreCompact` handoff,
 `PreToolUse` safety + secret-scan) fire automatically — no manual `~/.claude`
 copying.
+
+## Install in Codex
+
+GreatPM supports Codex desktop and Codex CLI as a native plugin with 48 agents,
+79 product-management skills, and 34 workflows:
+
+```bash
+codex plugin marketplace add VandanaAjayDubey111/great-pm
+codex plugin add great-pm@great-pm
+```
+
+Start a new Codex session and use `$pm-help` or `$pm-start`. Codex uses `$`
+skill invocation where Claude Code uses `/` commands; the product behavior,
+artefacts, specialist roles, and three human gates remain equivalent.
+
+See [`docs/CODEX.md`](docs/CODEX.md) for desktop installation, hook trust,
+first-run setup, upgrades, local testing, troubleshooting, and uninstall.
 
 **Recommended companions** (great-pm uses them where present, degrades
 gracefully where absent): [`superpowers`](https://github.com/obra/superpowers)
@@ -68,10 +85,11 @@ generic client setup.
 
 Verified with Codex CLI 0.153.4 on 2026-09-20: all three tools succeeded
 against the live server. See [compatibility and launch evidence](docs/MCP-READINESS.md).
-The full Codex-native GreatPM plugin is maintained separately on
-`codex/greatpm-codex-plugin`, pending public release. Installing the MCP gives
-Codex the public knowledge tools; install the native plugin for the full
-product-management operating system.
+The full Codex-native GreatPM plugin is packaged in `plugins/great-pm/`.
+Installing the MCP gives Codex the public knowledge tools; install the native
+plugin for the full product-management operating system. Both are included in
+this review branch. Public repository installation requires the plugin release
+to reach `main` first. See [the prepared release review](docs/release/REVIEW.md).
 
 ## What great-pm does
 
@@ -96,7 +114,7 @@ A product team in software:
 - **pm-reviewer** stress-tests every critical decision
 - **pm-lead** orchestrates them all
 - …plus a self-improvement loop (`continuous-learner` + `skill-scout`)
-  and 29 specialist agents (AI-PM pack + archetype reviewers).
+  and 29 additional specialist agents (AI-PM pack + archetype reviewers; 48 agents total).
 
 ## Screenshots
 
@@ -119,9 +137,8 @@ great-pm runs **on any model** and writes into **your** stack. Both work through
 one portable integration layer (**the Seam**), so nothing is locked to a single
 AI host.
 
-- **Model adapters** — thin adapters expose the connector layer to OpenAI and
-  Gemini function calling. They do not run the full specialist workflow.
-  Claude Code and the separately packaged Codex version use native plugins.
+- **Any model** — Claude Code and Codex are native plugin hosts; thin adapters
+  expose the same connector layer to **OpenAI and Gemini** function calling.
 - **Two-way tool connectors** — great-pm reads *and* writes **Notion**,
   **Slack**, **Linear**, **Jira**, and product analytics (**Amplitude / CSV**).
   Gate decisions, roadmaps, specs, and backlogs land in the tools your team
@@ -184,15 +201,13 @@ otherwise it proposes. Every autonomous swap is logged and reversible.
 
 ## Getting started
 
-1. Install the plugin (see **Install** above) — agents, skills, commands, and
-   hooks register automatically.
+1. Install the plugin for your host (see the install sections above) — agents,
+   skills, commands, and hooks register automatically.
 2. Copy `templates/PROJECT.md.template` to your project's `.great-pm/PROJECT.md`
    and customize.
-3. `/pm-start "<problem or opportunity>"` to start an initiative. Then:
-   - `/pm-inbox` — pending gates and open decisions
-   - `/pm-board` — open the project board
-   - `/pm-help` — list all commands
-   - `/pm-save` — extract lessons at session end
+3. Run `/pm-start "<problem or opportunity>"` in Claude Code or
+   `$pm-start "<problem or opportunity>"` in Codex. Then use the corresponding
+   host syntax for `pm-inbox`, `pm-board`, `pm-help`, and `pm-save`.
 
 ## Architecture
 
@@ -208,15 +223,19 @@ otherwise it proposes. Every autonomous swap is logged and reversible.
 - **scripts/** — the SessionStart context/loop hook + the skill-doctor health check.
 - **templates/** — PROJECT.md and deliverable templates.
 - **.claude-plugin/** — `plugin.json` (manifest + hooks) and `marketplace.json`.
+- **plugins/great-pm/** — generated, installable Codex package.
+- **.agents/plugins/marketplace.json** — repository marketplace for Codex.
+- **codex/** — deterministic packager, native host bindings, and parity tests.
 - **docs/HARNESS-LOOPS.md** — the feedback loops + Open-Decision Register design.
 
 ## Status
 
-**v1.0.0 — shipped.** 48 agents (6-stage loop + critical quartet + AI-PM pack +
-archetype/domain reviewers), 79 skills, the 6-stage loop with 3 human gates, the
-self-correcting loops (learning · feedback · brain-freshness), and the
-Open-Decision Register that stops questions from getting lost. Installable as a
-Claude Code plugin from this repo.
+**Claude Code v1.0.1 and Codex v1.1.3 are release candidates pending final
+desktop sign-off.** The package contains 48 agents (6-stage loop +
+critical quartet + AI-PM pack + archetype/domain reviewers), 79 skills, the
+6-stage loop with 3 human gates, the self-correcting loops (learning · feedback
+· brain-freshness), and the Open-Decision Register that stops questions from
+getting lost. Installable as a native plugin from this repo.
 
 ## License
 

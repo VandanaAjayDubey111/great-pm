@@ -8,10 +8,15 @@ permissions:
   contents: read
   id-token: write
 
+concurrency:
+  group: greatpm-mcp-registry
+  cancel-in-progress: false
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    environment: mcp-registry
 
     steps:
       - name: Check out repository
@@ -42,7 +47,10 @@ jobs:
 
       - name: Install MCP publisher
         run: |
-          curl -L "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" | tar xz mcp-publisher
+          curl --fail --location --retry 3 --output mcp-publisher.tar.gz \
+            https://github.com/modelcontextprotocol/registry/releases/download/v1.8.1/mcp-publisher_linux_amd64.tar.gz
+          sha256sum --check .github/release/mcp-publisher.sha256
+          tar xzf mcp-publisher.tar.gz mcp-publisher
 
       - name: Authenticate to MCP Registry
         run: ./mcp-publisher login github-oidc

@@ -49,14 +49,21 @@ credentials into issues, pull requests, chat, or repository files.
 
 ## Automated deployment
 
-The manual GitHub workflow requires:
+The manual GitHub workflow runs only from `main`, serializes deployments, and
+uses the `production` environment. Configure that environment with the owner
+as a required reviewer before running the workflow. It requires:
 
-- repository secret `CLOUDFLARE_API_TOKEN`, scoped to edit this Worker;
-- repository secret `CLOUDFLARE_ACCOUNT_ID`.
+- environment secret `CLOUDFLARE_API_TOKEN`, with the least account permissions
+  needed to deploy the Worker;
+- environment secret `CLOUDFLARE_ACCOUNT_ID` for the verified Cloudflare account.
 
-Create the least-privileged API token in Cloudflare after the first deployment.
+Create the least-privileged API token in Cloudflare after confirming the account.
 The workflow installs the lockfile-pinned dependencies, verifies the server,
 and deploys from `mcp/`.
+
+The exact owner-review settings and setup commands are prepared in
+[the release review](release/REVIEW.md). They are review artifacts, not proof
+that GitHub environments or secrets have been configured.
 
 ## Production verification
 
@@ -130,7 +137,13 @@ For a Registry update:
 3. merge the exact metadata;
 4. create the corresponding `mcp-v<version>` tag;
 5. let `.github/workflows/mcp-publish.yml` authenticate with GitHub OIDC and
-   publish;
+   publish after owner approval in the `mcp-registry` environment;
 6. confirm the version through the Registry API.
 
 Never reuse a published version number.
+
+The publisher is pinned to v1.8.1 and its Linux archive SHA-256 is checked
+against `.github/release/mcp-publisher.sha256` before execution. Ordinary
+branch pushes only run CI; they do not deploy or publish. A release tag is a
+separate publication action. Configure both GitHub environment protections
+before dispatching deployments or pushing release tags.

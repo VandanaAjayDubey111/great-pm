@@ -11,9 +11,10 @@ on:
       - "templates/**"
       - "docs/**"
       - ".github/workflows/mcp-*.yml"
+      - ".github/release/**"
       - "server.json"
   push:
-    branches: ["main"]
+    branches: ["main", "codex/**"]
     paths:
       - "README.md"
       - "SECURITY.md"
@@ -23,6 +24,7 @@ on:
       - "templates/**"
       - "docs/**"
       - ".github/workflows/mcp-*.yml"
+      - ".github/release/**"
       - "server.json"
 
 permissions:

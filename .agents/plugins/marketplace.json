@@ -1,0 +1,20 @@
+{
+  "name": "great-pm",
+  "interface": {
+    "displayName": "GreatPM"
+  },
+  "plugins": [
+    {
+      "name": "great-pm",
+      "source": {
+        "source": "local",
+        "path": "./plugins/great-pm"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
