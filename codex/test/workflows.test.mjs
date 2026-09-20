@@ -25,7 +25,9 @@ test('all 34 workflows are installable Codex skills', async () => {
       assert.match(text, /## Codex host binding/);
       assert.match(text, /read the `great-pm-runtime` skill/);
       assert.match(text, /Never call a wait tool until a spawn has returned/);
-      assert.match(text, /task_name.*exact canonical role name/i);
+      assert.match(text, /task_name.*agent_name/);
+      assert.match(text, /hyphens with underscores/);
+      assert.doesNotMatch(text, /Set `task_name` to the exact canonical role name/);
       assert.doesNotMatch(text, /model: opus/);
       assert.doesNotMatch(text, /allowed-tools:/);
       assert.doesNotMatch(text, /CLAUDE_PLUGIN_ROOT/);

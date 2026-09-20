@@ -5,6 +5,8 @@ description: "great-pm cross-cutting tough-call referee. When scope, time, and r
 
 ## Codex role binding
 
+- Internal task identifier: `tradeoff_arbiter`. Canonical role: `tradeoff-arbiter`; keep this canonical name in filenames, verdict logs, and user-facing output.
+- Before delegating further, read the `great-pm-runtime` skill and use its internal identifier mapping.
 - Run this role as a Codex subagent with a bounded, self-contained assignment.
 - Inherit the parent session permissions; request no broader authority.
 - Use the product skills named in the canonical role when they are packaged.

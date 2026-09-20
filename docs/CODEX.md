@@ -100,6 +100,17 @@ Only the human may approve `gate:strategy`, `gate:spec`, or `gate:launch`.
 Specialist agents draft and propose; they do not silently make final product
 decisions.
 
+### Specialist names and internal identifiers
+
+GreatPM preserves the Claude role names, workflow names, filenames, and verdict
+logs. Codex's spawn tool requires an internal identifier containing only lowercase
+letters, digits, and underscores, so `query-refiner-pm` runs as `query_refiner_pm`
+and `pm-lead` as `pm_lead`. This mapping is internal only: continue to use
+`$grill-me`, not `$grill_me`. The runtime records the canonical role alongside
+the internal identifier and returned agent ID. Version 1.1.4 introduced this
+mapping; the 1.1.5 candidate also includes the supporting workflow guide that
+earlier packages omitted. Start a new Codex session after installing the update.
+
 ## Test a local checkout
 
 Use an absolute path to a checkout whose `.agents/plugins/marketplace.json` and

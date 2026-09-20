@@ -13,8 +13,14 @@ If it reports an uninitialized workspace, stop and present its exact next step.
 
 1. Resolve the selected role under `../../agents/`; for example, the
    orchestrator role is `../../agents/pm-lead.md`.
-2. Set `task_name` to the exact canonical role name from that role file.
-   Never shorten, paraphrase, or invent specialist names: use `grill-me`, never `grill`.
+2. Keep two distinct names: the canonical role from that file and the internal
+   spawn identifier. For `task_name` or `agent_name` (whichever the exposed tool
+   schema accepts), replace every hyphen with an underscore:
+   `query-refiner-pm` → `query_refiner_pm`, `pm-lead` → `pm_lead`.
+   Identifiers must match `^[a-z0-9_]+$`. Each packaged role lists its identifier.
+   Preserve canonical names in prompts, filenames, verdict logs, and user-facing
+   output: use `grill-me`, never `grill`. Do not rename skills or role files.
+   Record canonical role, internal identifier, and returned agent ID together.
 3. Call the Codex `spawn_agent` collaboration tool with the role, initiative,
    expected artefact, dependencies, human-gate boundary, and DONE/BLOCKED
    contract. A prose promise to delegate is not a spawn.
