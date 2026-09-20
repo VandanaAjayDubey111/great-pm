@@ -66,6 +66,13 @@ files, run the 48-agent harness, use connectors, or make writes. See the
 [public MCP installation guide](docs/MCP.md) for Codex, VS Code, Claude, and
 generic client setup.
 
+Verified with Codex CLI 0.153.4 on 2026-09-20: all three tools succeeded
+against the live server. See [compatibility and launch evidence](docs/MCP-READINESS.md).
+The full Codex-native GreatPM plugin is maintained separately on
+`codex/greatpm-codex-plugin`, pending public release. Installing the MCP gives
+Codex the public knowledge tools; install the native plugin for the full
+product-management operating system.
+
 ## What great-pm does
 
 A product team in software:
@@ -112,8 +119,9 @@ great-pm runs **on any model** and writes into **your** stack. Both work through
 one portable integration layer (**the Seam**), so nothing is locked to a single
 AI host.
 
-- **Any model** — Claude Code is the native host; thin adapters expose the same
-  agents to **OpenAI, Gemini, and Codex** (OpenAI-compatible function-calling).
+- **Model adapters** — thin adapters expose the connector layer to OpenAI and
+  Gemini function calling. They do not run the full specialist workflow.
+  Claude Code and the separately packaged Codex version use native plugins.
 - **Two-way tool connectors** — great-pm reads *and* writes **Notion**,
   **Slack**, **Linear**, **Jira**, and product analytics (**Amplitude / CSV**).
   Gate decisions, roadmaps, specs, and backlogs land in the tools your team

@@ -60,6 +60,11 @@ and deploys from `mcp/`.
 
 ## Production verification
 
+The latest dated checks and unresolved launch items are recorded in
+[MCP-READINESS.md](MCP-READINESS.md). A successful smoke test establishes API
+compatibility; it does not establish Registry publication or deployment-account
+configuration.
+
 After every deployment:
 
 1. `GET /health` returns HTTP 200 and `{"status":"ok","service":"greatpm-mcp"}`.
@@ -70,6 +75,11 @@ After every deployment:
 6. `prompts/get` resolves `write-prd`.
 7. A request with a disallowed Origin returns HTTP 403.
 8. Cloudflare shows no unexpected bindings or secrets.
+
+For a Codex-specific check, install using [MCP.md](MCP.md), open a fresh task,
+and run its three-tool verification prompt. Confirm actual tool-call results,
+not only an assistant's final claim. A passing SDK test alone is not a Codex
+desktop test. Record the CLI/app version and exact endpoint tested.
 
 ## Logs and privacy
 

@@ -2,7 +2,10 @@
 
 GreatPM's public MCP server is a separate, read-only distribution of the
 project's product-management knowledge. It is intentionally smaller than the
-local Claude Code plugin.
+full local GreatPM product-management operating system. Claude Code and Codex
+use native plugin packaging; the Codex package is maintained separately on
+`codex/greatpm-codex-plugin` until release integration. MCP remains an optional
+public channel for curated knowledge.
 
 ## What already existed
 
