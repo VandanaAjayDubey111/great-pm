@@ -32,7 +32,7 @@
 - [x] Commit initial reviewed fixes/docs/generated package on the existing plugin branch; preserve unrelated untracked files. Initial fix commit: `2cbc56d`.
 - [x] Merge initial fixes into the stacked release-review branch without force pushes; rerun all tests. Integrated initial candidate: 180 passing.
 - [x] Push initial fixes on both branches; verify both GitHub CI results. All checks passed at plugin `2cbc56d` and integrated `b861c41`.
-- [ ] Push and verify subsequent 1.1.6 documentation/reference fixes on both branches.
+- [x] Push and verify subsequent 1.1.6 documentation/reference fixes on both branches. Plugin `f67d815` and integrated `f2fbd94` have green GitHub checks; local integrated verification passed 181 tests.
 - [ ] After prerequisites pass, merge plugin PR #2 first. Retarget PR #3 to main and rerun checks before its merge.
 - [ ] Apply prepared GitHub environment review/branch restrictions and securely configure deployment credentials.
 - [ ] Run manual deployment from main, verify exact deployed revision plus live clients, and confirm rollback.
